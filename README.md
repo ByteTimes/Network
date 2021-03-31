@@ -1,10 +1,10 @@
 <p align="center">
 <img width="210" height="210" align="left" style="float: left; margin: 0 10px 0 0;" src="https://avatars.githubusercontent.com/u/58343733?s=460&u=b8c05d0428f2a7c942a2625cf9898c2fe7cce00a&v=4" alt="SavileLee"/>
 </br>
-<h1>一键重装 <a href="https://dreamstart.site">Debian\Centos\Ubuntu系统脚本</a></h1>
-我们从未留意春秋不见，更不相信曾誓不分离的人，
+<h1>Oracle Cloud<a href="https://dreamstart.site">Debian</a></h1>
+一键重装Debian\Centos\Ubuntu系统
 </br>
-有天也会变成一春一秋，咫尺天涯……
+脚本来源于网络收集修改，不提供任何技术支持
 </p>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -25,4 +25,4 @@ apt-get update
 ## 3. 运行脚本，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位，可根据需求进行替换
 bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/SavileLee/Oracle/cloud/LinuxNET.sh') -d 10 -v 64 -a -firmware
 
-　　大概等待十几分钟就可以正常进入系统了，期间可通过VNC查看进度或者Ping IP的状态来判断系统是否启动成功，如果使用Ping来判断时，请注意Oracle安全组默认是禁Ping的，需要放行ICMP或者使用Tcp Ping，系统启动成功后的默认用户名：root，默认密码：dreamstart.site，为了安全，请及时登录系统修改密码。
+　　大概等待十几分钟就可以正常进入系统了，期间可通过VNC查看进度或者Ping IP的状态来判断系统是否启动成功，如果使用Ping来判断时，请注意Oracle安全组默认是禁Ping的，需要放行ICMP或者使用Tcp Ping，系统启动成功后的默认用户名：root，默认密码：MoeClub.org，为了安全，请及时登录系统修改密码。
