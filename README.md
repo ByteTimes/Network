@@ -3,8 +3,6 @@
 </br>
 <h1>Oracle Cloud<a href="https://dreamstart.site"> For Debian</a></h1>
 一键重装Debian\Centos\Ubuntu系统
-</br>
-脚本来源于网络收集修改，不提供任何技术支持
 </p>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
