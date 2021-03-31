@@ -14,14 +14,15 @@
 
 # 安装前环境说明
 　　- 初始系统为Ubuntu 16
+
 　　- 即将安装的系统为Debian 10
 
 # 方法
-1. 安装所需软件
-　　　　apt-get install -y xz-utils openssl gawk file
-　　2. 更新源
-　　　　apt-get update
-　　3. 运行脚本，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位，可根据需求进行替换
-　　　　bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/SavileLee/Oracle/cloud/LinuxNET.sh') -d 10 -v 64 -a -firmware
+## 1. 安装所需软件
+apt-get install -y xz-utils openssl gawk file
+## 2. 更新源
+apt-get update
+## 3. 运行脚本，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位，可根据需求进行替换
+bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/SavileLee/Oracle/cloud/LinuxNET.sh') -d 10 -v 64 -a -firmware
 
 　　大概等待十几分钟就可以正常进入系统了，期间可通过VNC查看进度或者Ping IP的状态来判断系统是否启动成功，如果使用Ping来判断时，请注意Oracle安全组默认是禁Ping的，需要放行ICMP或者使用Tcp Ping，系统启动成功后的默认用户名：root，默认密码：dreamstart.site，为了安全，请及时登录系统修改密码。
