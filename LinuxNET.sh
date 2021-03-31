@@ -344,7 +344,7 @@ fi
 
 [ -n "$ipAddr" ] && [ -n "$ipMask" ] && [ -n "$ipGate" ] && setNet='1';
 [[ -n "$tmpWORD" ]] && myPASSWORD="$(openssl passwd -1 "$tmpWORD")";
-[[ -z "$myPASSWORD" ]] && myPASSWORD='$1$4BJZaD0A$Ve3T6zfUjW8kMNRSMmoS90';
+[[ -z "$myPASSWORD" ]] && myPASSWORD='$1$4BJZaD0A$y1QykUnJ6mXprENfwpseH0';
 
 if [[ -n "$interface" ]]; then
   IFETH="$interface"
