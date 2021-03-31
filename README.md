@@ -1,5 +1,5 @@
 <p align="center">
-<img width="210" height="210" align="left" style="float: left; margin: 0 10px 0 0;" src="https://avatars.githubusercontent.com/u/58343733?s=460&u=b8c05d0428f2a7c942a2625cf9898c2fe7cce00a&v=4" alt="SavileLee"/>
+<img width="210" height="210" align="left" style="float: left; margin: 0 10px 0 0;" src="https://raw.githubusercontent.com/SavileLee/Oracle/cloud/Lib/oracle.png" alt="SavileLee"/>
 </br>
 <h1>Oracle Cloud<a href="https://dreamstart.site"> For Debian</a></h1>
 一键重装Debian\Centos\Ubuntu系统
