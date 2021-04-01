@@ -27,16 +27,16 @@ bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/Savil
 ```
 已测试原系统Ubuntu16.04安装成功，建议使用
 - 默认用户名：root
-- 默认密码：MoeClub.org
+- 默认密码：dreamstart.site
 ```
 
 ## ReInstall Debian 10
 ```
-bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh') -d 10 -v 64 -a -firmware
+bash <(wget --no-check-certificate -qO- 'https://SavileLee.github.io/LinuxNET.sh') -d 10 -v 64 -a -firmware
 ```
 ## Install DD系统
 ```
-bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh') -dd "https://****.***/***.x64.tar.gz"
+bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
 ```
 ## Timezone
 ```
