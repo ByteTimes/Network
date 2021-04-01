@@ -1,6 +1,6 @@
-## openssl 1.1.1g
+## openssl 1.1.1k
 ```
-ver="1.1.1g"
+ver="1.1.1k"
 wget "https://www.openssl.org/source/openssl-${ver}.tar.gz"
 tar -xvf "openssl-${ver}.tar.gz"
 cd "openssl-${ver}"
