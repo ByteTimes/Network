@@ -11,14 +11,14 @@
 [![Gmail Badge](https://img.shields.io/badge/-Gmail-1ca0f1?style=ightgrey&logo=Gmail&logoColor=white&link=mailto:liyesen@gmail.com)](mailto:liyesen@gmail.com)
 
 
-## 支持重装的系统：
+### 支持重装的系统：
 ```
 Debian 9/10
 Ubuntu 18.04/16.04
 CentOS 6/7
 自定义DD镜像
 ```
-## 特性/优化：
+### 特性/优化：
 ```
 自动获取IP地址、网关、子网掩码
 自动判断网络环境，选择国内/外镜像，再也不用担心卡半天了
@@ -26,26 +26,17 @@ CentOS 6/7
 解决萌咖脚本中一些导致安装错误的问题
 CentOS 7 镜像抛弃LVM，回归ext4，减少不稳定因素
 ```
-## 使用方法：
+### 使用方法：
 ```
 wget --no-check-certificate -O AutoReinstall.sh https://savilelee.github.io/Oracle/AutoReinstall.sh && bash AutoReinstall.sh
 ```
-## 初始密码：
+### 初始密码：
 ```
 - 默认用户名：root
 - 默认密码：dreamstart.site
 ```
 
-
-
-### 3. 建议：
-```
-已测试原系统Ubuntu16.04安装成功，建议使用
-- 默认用户名：root
-- 默认密码：dreamstart.site
-```
-
-## 直接ReInstall Debian 10，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位
+### 直接ReInstall Debian 10，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位
 ```
 bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -d 10 -v 64 -a -firmware
 ```
@@ -59,17 +50,17 @@ apt-get install -y xz-utils openssl gawk file
 apt-get update
 ```
 
-## Install DD系统
+### Install DD系统
 ```
 bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
 ```
-## Timezone
+### Timezone
 ```
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 echo "Asia/Shanghai" >/etc/timezone
 ```
 
-## Root
+### Root
 ```
 #!/bin/bash
 echo root:***** |sudo chpasswd root
