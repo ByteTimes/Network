@@ -11,12 +11,9 @@
 [![Gmail Badge](https://img.shields.io/badge/-Gmail-1ca0f1?style=ightgrey&logo=Gmail&logoColor=white&link=mailto:liyesen@gmail.com)](mailto:liyesen@gmail.com)
 
 
-### 支持重装的系统：
+
 ```
-Debian 9/10
-Ubuntu 18.04/16.04
-CentOS 6/7
-自定义DD镜像
+脚本根据萌咖脚本修改，感谢各位大佬的辛苦付出，这里只是脚本合集，不提供技术支持，请支持原作者
 ```
 ### 特性/优化：
 ```
@@ -26,6 +23,14 @@ CentOS 6/7
 解决萌咖脚本中一些导致安装错误的问题
 CentOS 7 镜像抛弃LVM，回归ext4，减少不稳定因素
 ```
+### 支持重装的系统：
+```
+Debian 9/10
+Ubuntu 18.04/16.04
+CentOS 6/7
+自定义DD镜像
+```
+
 ### 使用方法：
 ```
 wget --no-check-certificate -O AutoReinstall.sh https://savilelee.github.io/Oracle/AutoReinstall.sh && bash AutoReinstall.sh
