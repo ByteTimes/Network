@@ -35,7 +35,7 @@ CentOS 6/7
 
 ### 使用方法：
 ```
-bash -c "$(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)" @UI_Options
+bash -c "$(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)" && bash Network-Reinstall.sh -UI_Options
 wget --no-check-certificate -O AutoReinstall.sh https://savilelee.github.io/Oracle/AutoReinstall.sh && bash AutoReinstall.sh
 ```
 ### 初始密码：
