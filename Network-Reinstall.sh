@@ -66,6 +66,20 @@ echo "--------------------------------------------------------------------------
 echo -e "\n"
 sleep 2s
 
+function CopyRight() {
+  clear
+  echo "                                                           "
+  echo "================================================================"
+  echo "=                                                              ="
+  echo "=           一键网络重装系统 （图形化安装）                     ="
+  echo "=        Network-Reinstall-System (Graphical Install)          ="
+  echo "=                                                              ="
+  echo "=                                https://www.dreamstart.site   ="
+  echo "=                                                              ="
+  echo "================================================================"
+  echo -e "\n"
+}
+
 function isValidIp() {
   local ip=$1
   local ret=1
