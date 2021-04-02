@@ -186,11 +186,15 @@ function Start() {
   fi
 
   if [ "$isAuto" == '0' ]; then
+    echo "---------------------------------------------------------------------------------------------------------------------"
     echo "Using DHCP mode."
+    echo "---------------------------------------------------------------------------------------------------------------------"
   else
+  	echo "---------------------------------------------------------------------------------------------------------------------"
     echo "IP: $MAINIP"
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
+    echo "---------------------------------------------------------------------------------------------------------------------"
   fi
 
   [[ "$isCN" == '1' ]] && echo "Using domestic mode."
@@ -211,31 +215,57 @@ function Start() {
     UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
   fi
 
-  sed -i "/18.04/a\        [[ \"\$isDigital\" == \'20.04\' ]] && DIST=\'focal\'\;" /tmp/InstallNET.sh
-  sed -i '/force-efi-extra-removable/d' /tmp/InstallNET.sh
+sed -i "/18.04/a\        [[ \"\$isDigital\" == \'20.04\' ]] && DIST=\'focal\'\;" /tmp/InstallNET.sh
+sed -i '/force-efi-extra-removable/d' /tmp/InstallNET.sh
 
-  echo -e "\nPlease select an OS:"
-  echo "  1) CentOS 7.9 (DD Image)"
-  echo "  2) CentOS 7.6 (DD Image, ServerSpeeder Avaliable)"
-  echo "  3) CentOS 6"
-  echo "  4) Debian 9"
-  echo "  5) Debian 10"
-  echo "  6) Ubuntu 16.04"
-  echo "  7) Ubuntu 18.04"
-  echo "  8) Ubuntu 20.04"
-  echo "  9) Custom image"
-  echo "  0) Exit"
-  echo -ne "\nYour option: "
-  read N
+echo -e "\n\n\n"
+clear
+echo -e "\n"
+echo "                                                           "
+echo "================================================================"
+echo "=                                                              ="
+echo "=           一键网络重装系统 （图形化安装）                    ="
+echo "=        Network-Reinstall-System (Graphical Install)          ="
+echo "=                                                              ="
+echo "=                                https://www.dreamstart.site   ="
+echo "=                                                              ="
+echo "================================================================"
+echo "                                                                "
+ech="Which System do you want to Install:"
+echo "                                                                "
+echo "                                                                "
+echo "  1) Latest 【CentOS 8】(DD Image)"                                                               
+echo "  2) Latest 【CentOS 7】(DD Image)"
+echo "  3) Latest 【CentOS 6】"
+echo "                                                                "
+echo "  4) Latest 【Debian 10】(Recommend)"
+echo "  5) Latest 【Debian 9】"
+echo "                                                                "
+echo "  6) Latest 【Ubuntu 20.04】(Recommend)"
+echo "  7) Latest 【Ubuntu 18.04】"
+echo "  8) Latest 【Ubuntu 16.04】"
+echo "                                                                "
+echo "                                                                "
+echo "  ======以下系统已经过时，失去官方技术支持，不推荐使用。======  "
+echo "  ====== The system is outdated and is not recommended. ======  "
+echo "                                                                "
+echo "  9) Latest 【DD System】"
+echo "  0) Exit"
+echo "                                                                "
+echo "                                                                "
+echo "================================================================"
+echo "                                                                "
+echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
+read N
   case $N in
-    1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-7-image' $DMIRROR ;;
-    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-76-image' $DMIRROR ;;
+  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-76-image' $DMIRROR ;;
+    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-7-image' $DMIRROR ;;
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -c 6.10 -v 64 -a $NETSTR $CMIRROR ;;
-    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 9 -v 64 -a $NETSTR $DMIRROR ;;
-    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 10 -v 64 -a $NETSTR $DMIRROR ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 16.04 -v 64 -a $NETSTR $UMIRROR ;;
+    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 10 -v 64 -a $NETSTR $DMIRROR ;;
+    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 9 -v 64 -a $NETSTR $DMIRROR ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; sed -i 's#images/netboot#legacy-images/netboot#' /tmp/InstallNET.sh; bash /tmp/InstallNET.sh -u 20.04 -v 64 -a $NETSTR $UMIRROR ;;
     7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 18.04 -v 64 -a $NETSTR $UMIRROR ;;
-    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; sed -i 's#images/netboot#legacy-images/netboot#' /tmp/InstallNET.sh; bash /tmp/InstallNET.sh -u 20.04 -v 64 -a $NETSTR $UMIRROR ;;
+    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 16.04 -v 64 -a $NETSTR $UMIRROR ;;
     9)
       echo -e "\n"
       read -r -p "Custom image URL: " imgURL
@@ -254,11 +284,3 @@ function Start() {
 SetNetwork
 NetMode
 Start
-
-
-
-
-
-
-
-
