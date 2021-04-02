@@ -28,10 +28,13 @@ echo "--------------------------------------------------------------------------
 echo -e "\n"
 sleep 2s
 
-if [[ $EUID -ne 0 ]]; then
-    echo "Error: This script must be run as root!" 1>&2
+  if [[ 0 == "$UID" ]]; then
+    print_ok "当前用户是 root 用户，开始安装流程"
+  else
+    print_error "当前用户不是 root 用户，请切换到 root 用户后重新执行脚本"
     exit 1
-fi
+  fi
+
 
 if [ -f "/usr/bin/apt-get" ];then
 	isDebian=`cat /etc/issue|grep Debian`
