@@ -1,7 +1,7 @@
 <p align="center">
-<img width="210" height="180" align="left" style="float: left; margin: 0 10px 0 0;" src="https://savilelee.github.io/Network/CoreFiles/oracle.png?raw=true" alt="SavileLee"/>
+<img width="210" height="180" align="left" style="float: left; margin: 0 10px 0 0;" src="https://github.com/SavileLee/Network/blob/cloud/CoreFiles/oracle.png?raw=true" alt="SavileLee"/>
 
-<h1>Oracle Cloud<a href="https://dreamstart.site"> For System</a></h1>
+<h1>Network Cloud<a href="https://dreamstart.site"> For System</a></h1>
 一键重装Debian\Centos\Ubuntu系统
 </p>
 
@@ -45,7 +45,7 @@ wget --no-check-certificate -O AutoReinstall.sh https://savilelee.github.io/Orac
 
 ### 直接ReInstall Debian 10，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位
 ```
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -d 10 -v 64 -a -firmware
+bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh') -d 10 -v 64 -a -firmware
 ```
 ### 建议初始系统Ubuntu16.04，经测试使用非常稳定，需要安装下面的组件：
 #### 1. 安装所需软件
@@ -67,7 +67,7 @@ yum update
 
 ### Install DD系统
 ```
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
+bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
 ```
 ### Timezone
 ```
