@@ -35,7 +35,8 @@ CentOS 6/7
 
 ### 使用方法：
 ```
-bash -c "$(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
+bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
+
 
 bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/Network-Reinstall.sh') -UI_Options
 ```
