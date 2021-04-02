@@ -61,7 +61,23 @@ then
 	echo -e "\033[33m You have chosen to Start the Graphical Interface Options \033[0m"
 	echo -e "\n"
 	sleep 1s
-	wget --no-check-certificate -qO UI_Options.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/UI_Options.sh' && bash UI_Options.sh
+	wget --no-check-certificate -qO UI_Options.sh 'https://savilelee.github.io/Network/CoreFiles/UI_Options.sh' && bash UI_Options.sh
+fi
+
+if [ $1 = '-CentOS_8' ]
+then
+	echo -e "\033[33m You have chosen to install the latest CentOS_8 \033[0m"
+	echo -e "\n"
+	sleep 5s
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 8 -v 64 -a
+fi
+
+if [ $1 = '-CentOS_7' ]
+then
+	echo -e "\033[33m You have chosen to install the latest CentOS_7 \033[0m"
+	echo -e "\n"
+	sleep 5s
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 7 -v 64 -a
 fi
 
 if [ $1 = '-Debian_10' ]
@@ -69,7 +85,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Debian_10 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -d 10 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 10 -v 64 -a
 fi
 
 if [ $1 = '-Debian_9' ]
@@ -77,7 +93,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Debian_9 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -d 9 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 9 -v 64 -a
 fi
 
 if [ $1 = '-Ubuntu_20.04' ]
@@ -85,7 +101,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Ubuntu_20.04 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -u 20.04 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 20.04 -v 64 -a
 fi
 
 if [ $1 = '-Ubuntu_18.04' ]
@@ -93,7 +109,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Ubuntu_18.04 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -u 18.04 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 18.04 -v 64 -a
 fi
 
 if [ $1 = '-Ubuntu_16.04' ]
@@ -101,7 +117,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Ubuntu_16.04 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -u 16.04 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 16.04 -v 64 -a
 fi
 
 if [ $1 = '-DD' ]
@@ -109,7 +125,7 @@ then
 	echo -e "\033[33m You have chosen to install the DD package provided by you \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -dd $2
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd $2
 fi
 
 
@@ -120,7 +136,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest CentOS_6 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -c 6.10 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 6.10 -v 64 -a
 fi
 
 if [ $1 = '-Debian_8' ]
@@ -128,7 +144,7 @@ then
 	echo -e "\033[33m You have chosen to install the latest Debian_8 \033[0m"
 	echo -e "\n"
 	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -d 8 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 8 -v 64 -a
 fi
 
 if [ $1 = '-Debian_7' ]
@@ -137,16 +153,7 @@ then
 	echo -e "\033[41;30m !!! Installing the old system will lead to security risks !!! \033[0m"
 	echo -e "\n"
 	sleep 8s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -d 7 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_14.04' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Ubuntu_14.04 \033[0m"
-	echo -e "\033[41;30m !!! Installing the old system will lead to security risks !!! \033[0m"
-	echo -e "\n"
-	sleep 8s
-	wget --no-check-certificate -qO Core_Install.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/CoreShell/Core_Install_2020.sh' && bash Core_Install.sh -u 14.04 -v 64 -a
+	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 7 -v 64 -a
 fi
 
 
