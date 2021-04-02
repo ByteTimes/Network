@@ -131,7 +131,9 @@ function SetNetwork() {
 function NetMode() {
 
   if [ "$isAuto" == '0' ]; then
+echo "---------------------------------------------------------------------------------------------------------------------"
     read -r -p "Using DHCP to configure network automatically? [Y/n]:" input
+echo "---------------------------------------------------------------------------------------------------------------------"    
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -143,7 +145,9 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
+      echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "Error occurred when detecting ip. Please input manually.\n"
+      echo "---------------------------------------------------------------------------------------------------------------------"
       UpdateIp
     else
       echo "IP: $MAINIP"
@@ -190,7 +194,7 @@ function Start() {
   if [ -f "/tmp/InstallNET.sh" ]; then
     rm -f /tmp/InstallNET.sh
   fi
-  wget --no-check-certificate -qO /tmp/InstallNET.sh 'https://savilelee.github.io/Oracle/LinuxNET.sh' && chmod a+x /tmp/InstallNET.sh
+  wget --no-check-certificate -qO /tmp/InstallNET.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/InstallNET.sh
 
   CMIRROR=''
   CVMIRROR=''
@@ -254,113 +258,3 @@ Start
 
 
 
-if [ $1 = '-UI_Options' ]
-then
-	echo -e "\033[33m You have chosen to Start the Graphical Interface Options \033[0m"
-	echo -e "\n"
-	sleep 1s
-	wget --no-check-certificate -qO UI_Options.sh 'https://savilelee.github.io/Network/CoreFiles/UI_Options.sh' && bash UI_Options.sh
-fi
-
-if [ $1 = '-CentOS_8' ]
-then
-	echo -e "\033[33m You have chosen to install the latest CentOS_8 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 8 -v 64 -a
-fi
-
-if [ $1 = '-CentOS_7' ]
-then
-	echo -e "\033[33m You have chosen to install the latest CentOS_7 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 7 -v 64 -a
-fi
-
-if [ $1 = '-Debian_10' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Debian_10 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 10 -v 64 -a
-fi
-
-if [ $1 = '-Debian_9' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Debian_9 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 9 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_20.04' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Ubuntu_20.04 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 20.04 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_18.04' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Ubuntu_18.04 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 18.04 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_16.04' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Ubuntu_16.04 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 16.04 -v 64 -a
-fi
-
-if [ $1 = '-DD' ]
-then
-	echo -e "\033[33m You have chosen to install the DD package provided by you \033[0m"
-	echo -e "\n"
-    read -r -p "Custom image URL: " imgURL
-    wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd "$imgURL"
-fi
-
-
-
-
-if [ $1 = '-CentOS_6' ]
-then
-	echo -e "\033[33m You have chosen to install the latest CentOS_6 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 6.10 -v 64 -a
-fi
-
-if [ $1 = '-Debian_8' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Debian_8 \033[0m"
-	echo -e "\n"
-	sleep 5s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 8 -v 64 -a
-fi
-
-if [ $1 = '-Debian_7' ]
-then
-	echo -e "\033[33m You have chosen to install the latest Debian_7 \033[0m"
-	echo -e "\033[41;30m !!! Installing the old system will lead to security risks !!! \033[0m"
-	echo -e "\n"
-	sleep 8s
-	wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 7 -v 64 -a
-fi
-
-SetNetwork
-NetMode
-Start
-
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\033[35m Start Installation \033[0m"
-echo -e "\033[32m Start Installation \033[0m"
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\n"
-exit
