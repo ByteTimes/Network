@@ -127,8 +127,8 @@ function NetMode() {
 }
 
 function Start() {
-  CopyRight
 
+  CopyRight
   isCN='0'
   geoip=$(wget --no-check-certificate -qO- https://api.ip.sb/geoip -T 10 | grep "\"country_code\":\"CN\"")
   if [[ "$geoip" != "" ]];then
