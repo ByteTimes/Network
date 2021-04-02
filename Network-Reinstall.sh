@@ -20,7 +20,6 @@ echo "--------------------------------------------------------------------------
 echo " Default root password: dreamstart.site"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 2s
 
 if [[ $EUID -ne 0 ]]; then
 	1>&2
@@ -36,7 +35,6 @@ echo "--------------------------------------------------------------------------
 echo " Pre-environment preparation. . ."
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 2s
 
 
 if [ -f "/usr/bin/apt-get" ];then
@@ -45,17 +43,14 @@ if [ -f "/usr/bin/apt-get" ];then
 		echo 'Current system is Debian'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
-		sleep 3s
 	else
 		echo 'Current system is Ubuntu'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
-		sleep 3s
 	fi
 else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
-    sleep 3s
 fi
 
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -64,7 +59,7 @@ echo -e "\n"
 echo " Start system installation. . . "
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 2s
+sleep 1s
 
 function CopyRight() {
   clear
@@ -254,8 +249,8 @@ echo "  8) Latest 【Ubuntu 16.04】"
 echo "                                                                "
 echo "                                                                "
 echo "  ======安装其他系统请确保系统来源可靠，否则不建议使用。======  "
-echo "  ======   Please make sure the source of the system   ======  "
-echo "  ======  is reliable, otherwise it is not recommended. ======  "
+echo "  ========  Please make sure the source of the system   ========  "
+echo "  ========  is reliable, otherwise it is not recommended. =======  "
 echo "                                                                "
 echo "  9) Latest 【DD System】"
 echo "  0) Exit"
