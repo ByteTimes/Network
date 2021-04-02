@@ -129,7 +129,6 @@ function SetNetwork() {
 }
 
 function NetMode() {
-  CopyRight
 
   if [ "$isAuto" == '0' ]; then
     read -r -p "Using DHCP to configure network automatically? [Y/n]:" input
@@ -147,7 +146,6 @@ function NetMode() {
       echo -e "Error occurred when detecting ip. Please input manually.\n"
       UpdateIp
     else
-      CopyRight
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
