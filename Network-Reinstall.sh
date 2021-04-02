@@ -43,14 +43,17 @@ if [ -f "/usr/bin/apt-get" ];then
 		echo 'Current system is Debian'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
+    sleep 1s
 	else
 		echo 'Current system is Ubuntu'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
+    sleep 1s
 	fi
 else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
+    sleep 1s
 fi
 
 echo "---------------------------------------------------------------------------------------------------------------------"
