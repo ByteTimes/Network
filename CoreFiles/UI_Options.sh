@@ -40,6 +40,7 @@ echo "                                                                "
 echo "  7) Latest 【CentOS 6】"
 echo "  8) Latest 【Debian 8】"
 echo "  9) Latest 【Debian 7】"
+echo "  10) Latest 【DD System】"
 echo "                                                                "
 echo '  Custom DD System：bash Network-Reinstall.sh -DD "%URL%" '
 echo "                                                                "
@@ -55,11 +56,11 @@ case $Num in
   4) bash Network-Reinstall.sh -Ubuntu_20.04 ;;
   5) bash Network-Reinstall.sh -Ubuntu_18.04 ;;
   6) bash Network-Reinstall.sh -Ubuntu_16.04;;
-
-  
+ 
   7) bash Network-Reinstall.sh -CentOS_6 ;;
   8) bash Network-Reinstall.sh -Debian_8 ;;
   9) bash Network-Reinstall.sh -Debian_7 ;;
+  10) bash Network-Reinstall.sh -DD ;;
 
   *) echo "Wrong input, please enter again!" ;;
 esac

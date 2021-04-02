@@ -20,6 +20,16 @@ echo "--------------------------------------------------------------------------
 echo " Default root password: dreamstart.site"
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
+
+function is_root() {
+  if [[ 0 == "$UID" ]]; then
+    print_ok "The current user is the root user, start the installation process"
+  else
+    print_error "The current user is not the root user, please switch to the root user and re-execute the script"
+    exit 1
+  fi
+}
+
 sleep 6s
 
 echo "---------------------------------------------------------------------------------------------------------------------"
