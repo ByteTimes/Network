@@ -25,10 +25,10 @@ sleep 2s
 if [[ $EUID -ne 0 ]]; then
 	1>&2
 echo "---------------------------------------------------------------------------------------------------------------------"
-echo " Error: This script must be run as root!. . ." 
+echo " Error: The current user is not the root user, please switch to the root user and re-execute the script" 
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 2s
+sleep 1s
     exit 1
 fi
 
