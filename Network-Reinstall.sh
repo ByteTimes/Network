@@ -29,9 +29,9 @@ echo -e "\n"
 sleep 2s
 
   if [[ 0 == "$UID" ]]; then
-    print_ok "当前用户是 root 用户，开始安装流程"
+    print_ok "The current user is the root user, start the installation process"
   else
-    print_error "当前用户不是 root 用户，请切换到 root 用户后重新执行脚本"
+    print_error "The current user is not the root user, please switch to the root user and re-execute the script"
     exit 1
   fi
 
