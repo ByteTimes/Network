@@ -28,12 +28,14 @@ echo "--------------------------------------------------------------------------
 echo -e "\n"
 sleep 2s
 
-  if [[ 0 == "$UID" ]]; then
-    print_ok "The current user is the root user, start the installation process"
-  else
-    print_error "The current user is not the root user, please switch to the root user and re-execute the script"
+if [[ $EUID -ne 0 ]]; then
+    clear
+echo "---------------------------------------------------------------------------------------------------------------------"
+echo " Error: This script must be run as root!. . ."1>&2
+echo "---------------------------------------------------------------------------------------------------------------------"
+echo -e "\n"
     exit 1
-  fi
+fi
 
 
 if [ -f "/usr/bin/apt-get" ];then
