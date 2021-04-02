@@ -37,8 +37,9 @@ CentOS 6/7
 ```
 bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
 
+或
 
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/Network-Reinstall.sh') -UI_Options
+bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/Network-Reinstall.sh')
 ```
 ### 初始密码：
 ```
