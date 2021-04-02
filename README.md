@@ -50,11 +50,19 @@ bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/Linu
 ### 建议初始系统Ubuntu16.04，经测试使用非常稳定，需要安装下面的组件：
 #### 1. 安装所需软件
 ```
+#Debian/Ubuntu:
 apt-get install -y xz-utils openssl gawk file
+
+#RedHat/CentOS:
+yum install -y xz openssl gawk file
 ```
-#### 2. 更新APT源
+#### 2. 如果出现错误，请运行
 ```
+#Debian/Ubuntu:
 apt-get update
+
+#RedHat/CentOS:
+yum update
 ```
 
 ### Install DD系统
