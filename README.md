@@ -11,13 +11,12 @@
 [![Gmail Badge](https://img.shields.io/badge/-Gmail-1ca0f1?style=ightgrey&logo=Gmail&logoColor=white&link=mailto:liyesen@gmail.com)](mailto:liyesen@gmail.com)
 
 
-### 支持重装的系统：
-```
-Debian 9/10
-Ubuntu 18.04/16.04
-CentOS 6/7
-自定义DD镜像
-```
+
+<p>
+脚本根据萌咖脚本修改，不提供技术支持，请支持原作者
+</p>
+
+
 ### 特性/优化：
 ```
 自动获取IP地址、网关、子网掩码
@@ -26,6 +25,14 @@ CentOS 6/7
 解决萌咖脚本中一些导致安装错误的问题
 CentOS 7 镜像抛弃LVM，回归ext4，减少不稳定因素
 ```
+### 支持重装的系统：
+```
+Debian 9/10
+Ubuntu 18.04/16.04
+CentOS 6/7
+自定义DD镜像
+```
+
 ### 使用方法：
 ```
 wget --no-check-certificate -O AutoReinstall.sh https://savilelee.github.io/Oracle/AutoReinstall.sh && bash AutoReinstall.sh
@@ -43,11 +50,19 @@ bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/Linu
 ### 建议初始系统Ubuntu16.04，经测试使用非常稳定，需要安装下面的组件：
 #### 1. 安装所需软件
 ```
+#Debian/Ubuntu:
 apt-get install -y xz-utils openssl gawk file
+
+#RedHat/CentOS:
+yum install -y xz openssl gawk file
 ```
-#### 2. 更新APT源
+#### 2. 如果出现错误，请运行
 ```
+#Debian/Ubuntu:
 apt-get update
+
+#RedHat/CentOS:
+yum update
 ```
 
 ### Install DD系统
