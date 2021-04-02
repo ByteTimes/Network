@@ -136,17 +136,7 @@ then
 	echo -e "\033[33m You have chosen to install the DD package provided by you \033[0m"
 	echo -e "\n"
     read -r -p "Custom image URL: " imgURL
-    echo -e "\n"
-    read -r -p "Are you sure start reinstall? [Y/n]: " input
-      case $input in
-        [yY][eE][sS]|[yY]) 
-        wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd $imgURL
-        *) clear; echo "Canceled by user!"; exit 1;
-      esac
-      ;
-    0) exit 0;
-    *) echo "Wrong input!"; exit 1;
-  esac
+    wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd "$imgURL"
 fi
 
 
