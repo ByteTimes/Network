@@ -97,11 +97,9 @@ function GetIp() {
 }
 
 function UpdateIp() {
-  echo "---------------------------------------------------------------------------------------------------------------------"
   read -r -p "Your IP: " MAINIP
   read -r -p "Your Gateway: " GATEWAYIP
   read -r -p "Your Netmask: " NETMASK
-  echo "---------------------------------------------------------------------------------------------------------------------"  
 }
 
 function SetNetwork() {
@@ -131,11 +129,10 @@ function SetNetwork() {
 }
 
 function NetMode() {
+  CopyRight
 
   if [ "$isAuto" == '0' ]; then
-    echo "---------------------------------------------------------------------------------------------------------------------"
     read -r -p "Using DHCP to configure network automatically? [Y/n]:" input
-    echo "---------------------------------------------------------------------------------------------------------------------"
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -147,16 +144,13 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "Error occurred when detecting ip. Please input manually.\n"
-      echo "---------------------------------------------------------------------------------------------------------------------"
       UpdateIp
     else
-      echo "---------------------------------------------------------------------------------------------------------------------"
+      CopyRight
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
-      echo "---------------------------------------------------------------------------------------------------------------------"
       echo -e "\n"
       read -r -p "Confirm? [Y/n]:" input
       case $input in
@@ -179,6 +173,8 @@ function NetMode() {
 }
 
 function Start() {
+  CopyRight
+
   isCN='0'
   geoip=$(wget --no-check-certificate -qO- https://api.ip.sb/geoip -T 10 | grep "\"country_code\":\"CN\"")
   if [[ "$geoip" != "" ]];then
@@ -186,15 +182,11 @@ function Start() {
   fi
 
   if [ "$isAuto" == '0' ]; then
-    echo "---------------------------------------------------------------------------------------------------------------------"
     echo "Using DHCP mode."
-    echo "---------------------------------------------------------------------------------------------------------------------"
   else
-  	echo "---------------------------------------------------------------------------------------------------------------------"
     echo "IP: $MAINIP"
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
-    echo "---------------------------------------------------------------------------------------------------------------------"
   fi
 
   [[ "$isCN" == '1' ]] && echo "Using domestic mode."
@@ -215,8 +207,9 @@ function Start() {
     UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
   fi
 
-sed -i "/18.04/a\        [[ \"\$isDigital\" == \'20.04\' ]] && DIST=\'focal\'\;" /tmp/InstallNET.sh
-sed -i '/force-efi-extra-removable/d' /tmp/InstallNET.sh
+  sed -i "/18.04/a\        [[ \"\$isDigital\" == \'20.04\' ]] && DIST=\'focal\'\;" /tmp/InstallNET.sh
+  sed -i '/force-efi-extra-removable/d' /tmp/InstallNET.sh
+
 
 echo -e "\n\n\n"
 clear
@@ -224,7 +217,7 @@ echo -e "\n"
 echo "                                                           "
 echo "================================================================"
 echo "=                                                              ="
-echo "=           一键网络重装系统 （图形化安装）                    ="
+echo "=           一键网络重装系统 （图形化安装）                     ="
 echo "=        Network-Reinstall-System (Graphical Install)          ="
 echo "=                                                              ="
 echo "=                                https://www.dreamstart.site   ="
