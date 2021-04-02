@@ -325,7 +325,7 @@ if [[ "$SpikCheckDIST" == '0' ]]; then
 fi
 
 [[ "$ddMode" == '1' ]] && {
-  export SSL_SUPPORT='https://github.com/SavileLee/Oracle/raw/cloud/Lib/wget_udeb_amd64.tar.gz';
+  export SSL_SUPPORT='https://savilelee.github.io/Oracle/Lib/wget_udeb_amd64.tar.gz';
   if [[ -n "$tmpURL" ]]; then
     DDURL="$tmpURL"
     echo "$DDURL" |grep -q '^http://\|^ftp://\|^https://';
@@ -371,11 +371,11 @@ ASKVNC(){
 
 [ "$inVNC" == 'y' -o "$inVNC" == 'n' ] || ASKVNC;
 [[ "$ddMode" == '0' ]] && { 
-  [[ "$inVNC" == 'y' ]] && echo -e "\033[34mManual Mode\033[0m insatll [\033[33m$Relese\033[0m] [\033[33m$DIST\033[0m] [\033[33m$VER\033[0m] in VNC. "
-  [[ "$inVNC" == 'n' ]] && echo -e "\033[34mAuto Mode\033[0m insatll [\033[33m$Relese\033[0m] [\033[33m$DIST\033[0m] [\033[33m$VER\033[0m]. "
+  [[ "$inVNC" == 'y' ]] && echo -e "\033[34mManual Mode\033[0m install [\033[33m$Relese\033[0m] [\033[33m$DIST\033[0m] [\033[33m$VER\033[0m] in VNC. "
+  [[ "$inVNC" == 'n' ]] && echo -e "\033[34mAuto Mode\033[0m install [\033[33m$Relese\033[0m] [\033[33m$DIST\033[0m] [\033[33m$VER\033[0m]. "
 }
 [[ "$ddMode" == '1' ]] && {
-  echo -ne "\033[34mAuto Mode\033[0m insatll \033[33mWindows\033[0m\n[\033[33m$DDURL\033[0m]\n"
+  echo -ne "\033[34mAuto Mode\033[0m install \033[33mOS\033[0m\n[\033[33m$DDURL\033[0m]\n"
 }
 
 if [[ "$linux_relese" == 'centos' ]]; then
