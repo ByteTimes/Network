@@ -140,7 +140,7 @@ then
     read -r -p "Are you sure start reinstall? [Y/n]: " input
       case $input in
         [yY][eE][sS]|[yY]) 
-        wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh $NETSTR -dd $imgURL $DMIRROR ;;
+        wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd $imgURL
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
