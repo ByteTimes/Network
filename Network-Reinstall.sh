@@ -141,11 +141,11 @@ then
       case $input in
         [yY][eE][sS]|[yY]) 
         wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd $imgURL
-        *) clear; echo "Canceled by user!"; exit 1;;
+        *) clear; echo "Canceled by user!"; exit 1;
       esac
-      ;;
-    0) exit 0;;
-    *) echo "Wrong input!"; exit 1;;
+      ;
+    0) exit 0;
+    *) echo "Wrong input!"; exit 1;
   esac
 fi
 
