@@ -32,11 +32,11 @@ bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/Linu
 
 ## ReInstall Debian 10
 ```
-bash <(wget --no-check-certificate -qO- 'https://SavileLee.github.io/oracle/LinuxNET.sh') -d 10 -v 64 -a -firmware
+bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -d 10 -v 64 -a -firmware
 ```
 ## Install DD系统
 ```
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/oracle/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
+bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Oracle/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
 ```
 ## Timezone
 ```
