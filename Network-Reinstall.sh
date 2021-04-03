@@ -27,7 +27,7 @@ echo "--------------------------------------------------------------------------
 echo " Error: The current user is not the root user, please switch to the root user and re-execute the script…" 
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 1s
+sleep 3s
     exit 1
 fi
 
@@ -43,17 +43,17 @@ if [ -f "/usr/bin/apt-get" ];then
 		echo 'Current system is Debian'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
-    sleep 1s
+    sleep 2s
 	else
 		echo 'Current system is Ubuntu'
 		apt-get install -y xz-utils openssl gawk file wget curl
 		apt install -y xz-utils openssl gawk file wget curl
-    sleep 1s
+    sleep 2s
 	fi
 else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
-    sleep 1s
+    sleep 2s
 fi
 
 echo "---------------------------------------------------------------------------------------------------------------------"
@@ -193,6 +193,7 @@ function Start() {
     echo "IP: $MAINIP"
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
+    sleep 3s
   fi
 
 echo -e "\n\n\n"
