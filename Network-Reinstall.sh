@@ -17,9 +17,9 @@ function CopyRight() {
   echo "=                                https://www.dreamstart.site   ="
   echo "=                                                              ="
   echo "================================================================"
-  echo "                                                           "
-  echo "-----------------------------------------------------------------"
-  echo " Default root password: dreamstart.site"
+  echo "=                                                              ="
+  echo "=默认root密码：dreamstart.site"                                                             ="
+  echo "=Default root password: dreamstart.site" ="
   echo "================================================================"
   echo -e "\n"
 }
@@ -27,7 +27,7 @@ function CopyRight() {
 CopyRight
 if [[ $EUID -ne 0 ]]; then
 	1>&2
-  echo "================================================================="
+  echo "================================================================"
   echo "Error: 当前用户不是 root 用户，请切换到 root 用户重新执行脚本…" 
   echo "================================================================"
   echo -e "\n"
