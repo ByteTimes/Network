@@ -121,9 +121,9 @@ if [ -f "/tmp/Core_Install.sh" ]; then
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
     4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
     5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
-    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a ;;
-    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware ;;
+    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware ;;
+    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware ;;
     9)
       echo -e "\n"
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
@@ -135,6 +135,6 @@ if [ -f "/tmp/Core_Install.sh" ]; then
       esac
       ;;
     0) exit 0;;
-    *) echo "输入错误，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
+    *) echo "错误输入，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
   esac
 }
