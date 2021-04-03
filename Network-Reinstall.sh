@@ -117,7 +117,7 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   read N
   case $N in
   	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8.3 -v 64 -a -firmware ;;
-    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7.9 -v 64 -a -firmware ;;
+    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7 -v 64 -a -firmware ;;
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
     4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
     5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware ;;
