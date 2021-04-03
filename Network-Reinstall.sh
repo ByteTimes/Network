@@ -29,7 +29,7 @@ CopyRight
 if [[ $EUID -ne 0 ]]; then
 	1>&2
   echo "================================================================"
-  echo "Error: 当前用户不是 root 用户，请切换到 root 用户重新执行脚本…" 
+  echo "Error:当前用户不是 root 用户，请切换到 root 用户重新执行脚本. . ." 
   echo "================================================================"
   echo -e "\n"
   sleep 5s
@@ -69,53 +69,56 @@ CopyRight
   echo -e "\n"
   sleep 1s
 
-
-
 if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
   fi
   wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/Core_Install.sh
 
-echo -e "\n\n\n"
-clear
-echo -e "\n"
-echo "                                                           "
-echo "================================================================"
-echo "=                                                              ="
-echo "=           一键网络重装系统 （图形化安装）                    ="
-echo "=        Network-Reinstall-System (Graphical Install)          ="
-echo "=                                                              ="
-echo "=                                https://www.dreamstart.site   ="
-echo "=                                                              ="
-echo "================================================================"
-echo "                                                                "
-ech="Which System do you want to Install:"
-echo "                                                                "
-echo "                                                                "
-echo "  1) Latest 【CentOS 8】(DD Image)"                                                               
-echo "  2) Latest 【CentOS 7】(DD Image)"
-echo "  3) Latest 【CentOS 6】"
-echo "                                                                "
-echo "  4) Latest 【Debian 10】(Recommend)"
-echo "  5) Latest 【Debian 9】"
-echo "                                                                "
-echo "  6) Latest 【Ubuntu 20.04】(Recommend)"
-echo "  7) Latest 【Ubuntu 18.04】"
-echo "  8) Latest 【Ubuntu 16.04】"
-echo "                                                                "
-echo "                                                                "
-echo "  ======安装其他系统请确保系统来源可靠，否则不建议使用。======  "
-echo "  =======  Please make sure the source of the system   =======  "
-echo "  =======is reliable, otherwise it is not recommended. =======  "
-echo "                                                                "
-echo "  9) Latest 【DD System】"
-echo "  0) Exit"
-echo "                                                                "
-echo "                                                                "
-echo "================================================================"
-echo "                                                                "
-echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
-read N
+  echo -e "\n\n\n"
+  clear
+  echo -e "\n"
+  echo "                                                           "
+  echo "================================================================"
+  echo "=                                                              ="
+  echo "=           一键网络重装系统 （图形化安装）                    ="
+  echo "=        Network-Reinstall-System (Graphical Install)          ="
+  echo "=                                                              ="
+  echo "=                                https://www.dreamstart.site   ="
+  echo "=                                                              ="
+  echo "================================================================"
+  echo "=   --------------------------------------------------------   ="
+  echo "=   默认root密码：dreamstart.site                              ="
+  echo "=   Default root password: dreamstart.site                     ="
+  echo "=   --------------------------------------------------------   ="
+  echo "================================================================"
+  echo "                                                                "
+  ech="Which System do you want to Install:"
+  echo "                                                                "
+  echo "                                                                "
+  echo "  1) Latest 【CentOS 8】(DD Image)"                                                               
+  echo "  2) Latest 【CentOS 7】(DD Image)"
+  echo "  3) Latest 【CentOS 6】"
+  echo "                                                                "
+  echo "  4) Latest 【Debian 10】(Recommend)"
+  echo "  5) Latest 【Debian 9】"
+  echo "                                                                "
+  echo "  6) Latest 【Ubuntu 20.04】(Recommend)"
+  echo "  7) Latest 【Ubuntu 18.04】"
+  echo "  8) Latest 【Ubuntu 16.04】"
+  echo "                                                                "
+  echo "                                                                "
+  echo "  ======安装其他系统请确保系统来源可靠，否则不建议使用。======  "
+  echo "  =======  Please make sure the source of the system   =======  "
+  echo "  =======is reliable, otherwise it is not recommended. =======  "
+  echo "                                                                "
+  echo "  9) Latest 【DD System】"
+  echo "  0) Exit"
+  echo "                                                                "
+  echo "                                                                "
+  echo "================================================================"
+  echo "                                                                "
+  echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
+  read N
   case $N in
   	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware ;;
     2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7 -v 64 -a -firmware ;;
