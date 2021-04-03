@@ -30,7 +30,7 @@ CopyRight
 if [[ $EUID -ne 0 ]]; then
 	1>&2
   echo "================================================================"
-  echo "Error:当前用户不是 root 用户，请切换到 root 用户重新执行脚本. . ." 
+  echo "Error:当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
   echo "================================================================"
   echo -e "\n"
   sleep 1s
@@ -93,8 +93,7 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   echo "=   --------------------------------------------------------   ="
   echo "================================================================"
   echo "                                                                "
-  ech="Which System do you want to Install:"
-  echo "                                                                "
+  echo "Which System do you want to Install:"
   echo "                                                                "
   echo "  1) Latest 【CentOS 8】(DD Image)"                                                               
   echo "  2) Latest 【CentOS 7】(DD Image)"
