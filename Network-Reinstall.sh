@@ -127,7 +127,7 @@ read N
       echo -e "\n"
       read -r -p "Are you sure start reinstall? [Y/n]: " input
       case $input in
-        [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" $NETSTR ;;
+        [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" ;;
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
