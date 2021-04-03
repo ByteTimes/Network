@@ -256,21 +256,21 @@ echo "                                                                "
 echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
 read N
   case $N in
-  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -CentOS_8 ;;
-    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -CentOS_7 ;;
-    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -CentOS_6 ;;
-    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -Debian_10 ;;
-    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -Debian_9 ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -Ubuntu_20.04 ;;
-    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -Ubuntu_18.04 ;;
-    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash Network-Reinstall.sh -Ubuntu_16.04;;
+  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh')  -c 8 -v 64 -a -firmware ;;
+    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 7 -v 64 -a -firmware ;;
+    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 6.10 -v 64 -a -firmware ;;
+    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware ;;
+    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 20.04 -v 64 -a ;;
+    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 18.04 -v 64 -a ;;
+    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 16.04 -v 64 -a ;;
     9)
       echo -e "\n"
       read -r -p "Custom image URL: " imgURL
       echo -e "\n"
       read -r -p "Are you sure start reinstall? [Y/n]: " input
       case $input in
-        [yY][eE][sS]|[yY]) bash Network-Reinstall.sh -DD ;;
+        [yY][eE][sS]|[yY]) bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -dd "$imgURL" ;;
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
@@ -279,84 +279,6 @@ read N
   esac
 }
 
-if [ $1 = '-CentOS_8' ]
-then
-  echo -e "\033[33m You have chosen to install the latest CentOS_8 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 8 -v 64 -a
-fi
-
-if [ $1 = '-CentOS_7' ]
-then
-  echo -e "\033[33m You have chosen to install the latest CentOS_7 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 7 -v 64 -a
-fi
-
-if [ $1 = '-CentOS_6' ]
-then
-  echo -e "\033[33m You have chosen to install the latest CentOS_6 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -c 6.10 -v 64 -a
-fi
-
-if [ $1 = '-Debian_10' ]
-then
-  echo -e "\033[33m You have chosen to install the latest Debian_10 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 10 -v 64 -a
-fi
-
-if [ $1 = '-Debian_9' ]
-then
-  echo -e "\033[33m You have chosen to install the latest Debian_9 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -d 9 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_20.04' ]
-then
-  echo -e "\033[33m You have chosen to install the latest Ubuntu_20.04 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 20.04 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_18.04' ]
-then
-  echo -e "\033[33m You have chosen to install the latest Ubuntu_18.04 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 18.04 -v 64 -a
-fi
-
-if [ $1 = '-Ubuntu_16.04' ]
-then
-  echo -e "\033[33m You have chosen to install the latest Ubuntu_16.04 \033[0m"
-  echo -e "\n"
-  sleep 5s
-  wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -u 16.04 -v 64 -a
-fi
-
-if [ $1 = '-DD' ]
-then
-  echo -e "\033[33m You have chosen to install the DD package provided by you \033[0m"
-  echo -e "\n"
-    read -r -p "Custom image URL: " imgURL
-    wget --no-check-certificate -qO Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && bash Core_Install.sh -dd "$imgURL"
-fi
-
-
-
-
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\033[35m Start Installation \033[0m"
-echo -e "\033[32m Start Installation \033[0m"
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\n"
-exit
+SetNetwork
+NetMode
+Start
