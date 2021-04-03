@@ -196,6 +196,14 @@ function Start() {
     sleep 3s
   fi
 
+    if [ -f "/tmp/Core_Install.sh" ]; then
+    rm -f /tmp/Core_Install.sh
+  fi
+  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/Core_Install.sh
+
+  sed -i "/18.04/a\        [[ \"\$isDigital\" == \'20.04\' ]] && DIST=\'focal\'\;" /tmp/Core_Install.sh
+  sed -i '/force-efi-extra-removable/d' /tmp/Core_Install.sh
+
 echo -e "\n\n\n"
 clear
 echo -e "\n"
@@ -237,21 +245,21 @@ echo "                                                                "
 echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
 read N
   case $N in
-  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh')  -c 8 -v 64 -a -firmware ;;
-    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 7 -v 64 -a -firmware ;;
-    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 6.10 -v 64 -a -firmware ;;
-    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware $NETSTR ;;
-    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 20.04 -v 64 -a ;;
-    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 18.04 -v 64 -a ;;
-    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 16.04 -v 64 -a ;;
+  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware ;;
+    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7 -v 64 -a -firmware ;;
+    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
+    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware $NETSTR ;;
+    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; sed -i 's#images/netboot#legacy-images/netboot#' /tmp/InstallNET.sh; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
+    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a ;;
+    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a ;;
     9)
       echo -e "\n"
       read -r -p "Custom image URL: " imgURL
       echo -e "\n"
       read -r -p "Are you sure start reinstall? [Y/n]: " input
       case $input in
-        [yY][eE][sS]|[yY]) bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -dd "$imgURL" $NETSTR ;;
+        [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" $NETSTR ;;
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
