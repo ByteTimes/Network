@@ -35,7 +35,7 @@ CentOS 6/7
 
 ### 使用方法：
 ```
-bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
+bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh&& chmod a+x Network-Reinstall.sh)
 
 或
 
