@@ -249,7 +249,7 @@ fi
 if [[ -z "$tmpDIST" ]]; then
   [ "$Relese" == 'Debian' ] && tmpDIST='jessie' && DIST='jessie';
   [ "$Relese" == 'Ubuntu' ] && tmpDIST='bionic' && DIST='bionic';
-  [ "$Relese" == 'CentOS' ] && tmpDIST='6.10' && DIST='6.10';
+  [ "$Relese" == 'CentOS' ] && tmpDIST='7.9.2009' && DIST='7.9.2009';
 fi
 
 if [[ -z "$DIST" ]]; then
@@ -392,7 +392,7 @@ if [[ "$linux_relese" == 'centos' ]]; then
     fi
     awk 'BEGIN{print '${UNVER}'-'${DIST}'+0.59}' |grep -q '^-'
     if [ $? == '0' ]; then
-      echo -en "\n\033[31mThe version higher then \033[33m6.10 \033[31mis not support in current! \033[0m\n\n"
+      echo -en "\n\033[31mThe version higher then \033[33m7.9.2009 \033[31mis not support in current! \033[0m\n\n"
       exit 1;
     fi
   fi
