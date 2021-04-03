@@ -64,7 +64,6 @@ else
 
   echo "================================================================"
   echo " 初始化完成. . . Pre-environment preparation. . . 【OK】"
-  echo -e "\n"
   echo " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
