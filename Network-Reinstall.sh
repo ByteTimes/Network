@@ -17,6 +17,8 @@ function CopyRight() {
   echo "=                                https://www.dreamstart.site   ="
   echo "=                                                              ="
   echo "================================================================"
+  echo "                                                           "
+  echo "================================================================"
   echo " Default root password: dreamstart.site"
   echo "================================================================"
   echo -e "\n"
@@ -26,7 +28,7 @@ CopyRight
 if [[ $EUID -ne 0 ]]; then
 	1>&2
   echo "================================================================"
-  echo " Error: 当前用户不是 root 用户，请切换到 root 用户重新执行脚本. . ." 
+  echo "Error: 当前用户不是 root 用户，请切换到 root 用户重新执行脚本. . ." 
   echo "================================================================"
   echo -e "\n"
   sleep 5s
@@ -59,9 +61,9 @@ else
   fi
 CopyRight
   echo "================================================================"
-  echo " 初始化完成 Pre-environment preparation. . .  【OK】"
+  echo " 初始化完成. . . Pre-environment preparation. . . 【OK】"
   echo -e "\n"
-  echo " 开始系统安装 Start system installation. . . "
+  echo " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
   sleep 1s
