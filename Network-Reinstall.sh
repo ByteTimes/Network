@@ -23,7 +23,7 @@ function CopyRight() {
   echo "=   --------------------------------------------------------   ="
   echo "================================================================"
   echo -e "\n"
-  sleep 2s
+  sleep 1s
 }
 
 CopyRight
@@ -123,20 +123,20 @@ if [ -f "/tmp/Core_Install.sh" ]; then
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
     4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
     5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; sed -i 's#images/netboot#legacy-images/netboot#' /tmp/Core_Install.sh; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
     7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a ;;
     8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a ;;
     9)
       echo -e "\n"
-      read -r -p "Custom image URL: " imgURL
+      read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
       echo -e "\n"
-      read -r -p "Are you sure start reinstall? [Y/n]: " input
+      read -r -p "你确定要重装系统吗 Are you sure start reinstall? [Y/n]: " input
       case $input in
         [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" ;;
-        *) clear; echo "Canceled by user!"; exit 1;;
+        *) clear; echo "已被用户取消. . .Canceled by user. . ."; exit 1;;
       esac
       ;;
     0) exit 0;;
-    *) echo "Wrong input!"; exit 1;;
+    *) echo "输入错误，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
   esac
 }
