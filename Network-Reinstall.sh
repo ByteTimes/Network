@@ -61,14 +61,14 @@ else
     yum install -y xz openssl gawk file wget curl
     sleep 2s
   fi
-CopyRight
+
   echo "================================================================"
   echo " 初始化完成. . . Pre-environment preparation. . . 【OK】"
   echo -e "\n"
   echo " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
-  sleep 1s
+  sleep 3s
 
 if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
