@@ -187,12 +187,6 @@ function NetMode() {
 function Start() {
   CopyRight
 
-  isCN='0'
-  geoip=$(wget --no-check-certificate -qO- https://api.ip.sb/geoip -T 10 | grep "\"country_code\":\"CN\"")
-  if [[ "$geoip" != "" ]];then
-    isCN='1'
-  fi
-
   if [ "$isAuto" == '0' ]; then
     echo "Using DHCP mode."
   else
@@ -200,20 +194,6 @@ function Start() {
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
   fi
-
-  [[ "$isCN" == '1' ]] && echo "Using domestic mode."
-
-  CMIRROR=''
-  CVMIRROR=''
-  DMIRROR=''
-  UMIRROR=''
-  if [[ "$isCN" == '1' ]];then
-    CMIRROR="--mirror http://mirrors.aliyun.com/centos/"
-    CVMIRROR="--mirror http://mirrors.tuna.tsinghua.edu.cn/centos-vault/"
-    DMIRROR="--mirror http://mirrors.aliyun.com/debian/"
-    UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
-  fi
-
 
 echo -e "\n\n\n"
 clear
