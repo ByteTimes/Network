@@ -118,14 +118,14 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
   read N
   case $N in
-  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware ;;
-    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7 -v 64 -a -firmware ;;
-    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
-    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
-    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
-    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
-    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a ;;
-    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a ;;
+  	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware ;;
+    2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7 -v 64 -a -firmware ;;
+    3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
+    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
+    5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware ;;
+    6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 20.04 -v 64 -a ;;
+    7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 18.04 -v 64 -a ;;
+    8) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -u 16.04 -v 64 -a ;;
     9)
       echo -e "\n"
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
