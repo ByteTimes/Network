@@ -135,7 +135,3 @@ read N
     *) echo "Wrong input!"; exit 1;;
   esac
 }
-
-SetNetwork
-NetMode
-Start
