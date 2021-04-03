@@ -27,7 +27,7 @@ echo "--------------------------------------------------------------------------
 echo " Error: The current user is not the root user, please switch to the root user and re-execute the script…" 
 echo "---------------------------------------------------------------------------------------------------------------------"
 echo -e "\n"
-sleep 3s
+sleep 5s
     exit 1
 fi
 
