@@ -22,21 +22,22 @@ function CopyRight() {
   echo -e "\n"
 }
 
+CopyRight
 if [[ $EUID -ne 0 ]]; then
 	1>&2
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo " Error: The current user is not the root user, please switch to the root user and re-execute the script…" 
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\n"
-sleep 5s
+  echo "================================================================"
+  echo " Error: 当前用户不是 root 用户，请切换到 root 用户后重新执行脚本. . ." 
+  echo "================================================================"
+  echo -e "\n"
+  sleep 5s
     exit 1
 fi
 
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo " Pre-environment preparation. . ."
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\n"
-sleep 2s
+  echo "================================================================"
+  echo " 安装环境准备中 Pre-environment preparation. . ."
+  echo "================================================================"
+  echo -e "\n"
+  sleep 2s
 
 if [ -f "/usr/bin/apt-get" ];then
 	isDebian=`cat /etc/issue|grep Debian`
@@ -55,19 +56,19 @@ else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
     sleep 2s
-fi
+  fi
+CopyRight
+  echo "================================================================"
+  echo " 初始化完成 Pre-environment preparation. . .  【OK】"
+  echo -e "\n"
+  echo " 开始系统安装 Start system installation. . . "
+  echo "================================================================"
+  echo -e "\n"
+  sleep 1s
 
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo " Pre-environment preparation. . .  【OK】"
-echo -e "\n"
-echo " Start system installation. . . "
-echo "---------------------------------------------------------------------------------------------------------------------"
-echo -e "\n"
-sleep 1s
 
 
-
-    if [ -f "/tmp/Core_Install.sh" ]; then
+if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
   fi
   wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/Core_Install.sh
