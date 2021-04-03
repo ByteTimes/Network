@@ -259,7 +259,7 @@ read N
   	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh')  -c 8 -v 64 -a -firmware ;;
     2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 7 -v 64 -a -firmware ;;
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -c 6.10 -v 64 -a -firmware ;;
-    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware ;;
+    4) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware $NETSTR ;;
     5) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -d 10 -v 64 -a -firmware ;;
     6) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 20.04 -v 64 -a ;;
     7) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "Press any key to continue..." ; bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -u 18.04 -v 64 -a ;;
@@ -270,7 +270,7 @@ read N
       echo -e "\n"
       read -r -p "Are you sure start reinstall? [Y/n]: " input
       case $input in
-        [yY][eE][sS]|[yY]) bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -dd "$imgURL" ;;
+        [yY][eE][sS]|[yY]) bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh') -dd "$imgURL" $NETSTR ;;
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
