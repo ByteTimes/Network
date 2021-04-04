@@ -246,7 +246,7 @@ function CentOS_8() {
   System_Check
   Install_load
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
-  bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware 
+  bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware 
 }
 
 function CentOS_7() {
