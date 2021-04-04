@@ -120,24 +120,27 @@ function CopyRight() {
   sleep 1s
 }
 
-
-function isRoot_Check(){
-if [[ $EUID -ne 0 ]]; then
-  1>&2
-  echo "================================================================"
-  print_error "当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
-  echo "================================================================"
-  echo -e "\n"
-  sleep 1s
+function isRoot_Check() {
+  if [[ 0 == "$UID" ]]; then
+    echo "================================================================"
+    print_ok "当前用户是 root 用户，开始安装流程"
+    echo "================================================================"
+    echo -e "\n"
+    sleep 1s
+  else
+    echo "================================================================"
+    print_error "当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
+    echo "================================================================"
+    echo -e "\n"
+    sleep 1s
     exit 1
-fi
+  fi
 }
-
 
 function System_Check(){
   CopyRight
   echo "================================================================"
-  echo " 安装环境准备中 Pre-environment preparation. . ."
+  print_ok " 安装环境准备中 Pre-environment preparation. . ."
   echo "================================================================"
   echo -e "\n"
   sleep 2s
@@ -162,8 +165,8 @@ else
   fi
 
   echo "================================================================"
-  print_ok " 初始化完成. . . Pre-environment preparation. . . 【OK】"
-  echo " 开始系统安装  Start system installation. . . "
+  print_ok " 初始化完成. . . Pre-environment preparation. . ."
+  print_ok " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
   sleep 3s
@@ -216,7 +219,7 @@ function MENU() {
   echo "=  0) Exit                                                     ="
   echo "=                                                              ="
   echo "================================================================"
-  echo -ne "\n请输入数字 Enter the System Identification Nnumber : "
+  echo -ne "\n请输入数字选择 Enter the System Identification Nnumber : "
   read Num
   case $Num in
     1) CentOS_8 ;;
@@ -247,6 +250,54 @@ function CentOS_8() {
   Install_load
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
   bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware 
+}
+
+function CentOS_7() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
+}
+function CentOS_6() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh  -c 6.10 -v 64 -a -firmware 
+}
+
+function Debian_10() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware 
+}
+
+function Debian_9() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware
+}
+
+function Ubuntu_20.04() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware
+}
+
+function Ubuntu_18.04() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware
+}
+
+function Ubuntu_16.04() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware
 }
 
 
