@@ -26,9 +26,10 @@ function CopyRight() {
   sleep 1s
 }
 
-CopyRight
+
+function isRoot_Check(){
 if [[ $EUID -ne 0 ]]; then
-	1>&2
+  1>&2
   echo "================================================================"
   echo "Error:当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
   echo "================================================================"
@@ -36,7 +37,11 @@ if [[ $EUID -ne 0 ]]; then
   sleep 1s
     exit 1
 fi
+}
 
+
+function System_Check(){
+  CopyRight
   echo "================================================================"
   echo " 安装环境准备中 Pre-environment preparation. . ."
   echo "================================================================"
@@ -44,18 +49,18 @@ fi
   sleep 2s
 
 if [ -f "/usr/bin/apt-get" ];then
-	isDebian=`cat /etc/issue|grep Debian`
-	if [ "$isDebian" != "" ];then
-		echo 'Current system is Debian'
-		apt-get install -y xz-utils openssl gawk file wget curl
-		apt install -y xz-utils openssl gawk file wget curl
+  isDebian=`cat /etc/issue|grep Debian`
+  if [ "$isDebian" != "" ];then
+    echo 'Current system is Debian'
+    apt-get install -y xz-utils openssl gawk file wget curl
+    apt install -y xz-utils openssl gawk file wget curl
     sleep 2s
-	else
-		echo 'Current system is Ubuntu'
-		apt-get install -y xz-utils openssl gawk file wget curl
-		apt install -y xz-utils openssl gawk file wget curl
+  else
+    echo 'Current system is Ubuntu'
+    apt-get install -y xz-utils openssl gawk file wget curl
+    apt install -y xz-utils openssl gawk file wget curl
     sleep 2s
-	fi
+  fi
 else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
@@ -68,12 +73,10 @@ else
   echo "================================================================"
   echo -e "\n"
   sleep 3s
+}
 
-if [ -f "/tmp/Core_Install.sh" ]; then
-    rm -f /tmp/Core_Install.sh
-  fi
-  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
 
+function MENU() {
   echo -e "\n\n\n"
   clear
   echo -e "\n"
@@ -114,8 +117,15 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   echo "=                                                              ="
   echo "================================================================"
   echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
-  read N
-  case $N in
+}
+
+Install_start(){
+if [ -f "/tmp/Core_Install.sh" ]; then
+    rm -f /tmp/Core_Install.sh
+  fi
+  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
+  read Num
+  case $Num in
   	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware ;;
     2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware ;;
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
@@ -128,7 +138,7 @@ if [ -f "/tmp/Core_Install.sh" ]; then
       echo -e "\n"
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
       echo -e "\n"
-      read -r -p "你确定要重装系统吗 Are you sure start reinstall? [Y/n]: " input
+      read -r -p "你确定要重装系统 Are you sure start reinstall? [Y/n]: " input
       case $input in
         [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" ;;
         *) clear; echo "已被用户取消. . .Canceled by user. . ."; exit 1;;
@@ -138,3 +148,5 @@ if [ -f "/tmp/Core_Install.sh" ]; then
     *) echo "错误输入，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
   esac
 }
+
+MENU
