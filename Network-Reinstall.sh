@@ -255,5 +255,6 @@ function CentOS_8() {
 
 
 isRoot_Check
+judgment_parameters "$@"
 MENU "$@"
 
