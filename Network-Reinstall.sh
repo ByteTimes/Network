@@ -5,6 +5,30 @@
 ## Default root password: dreamstart.site
 ## BLOG: https://dreamstart.site
 
+# 字体颜色配置
+Green="\033[32m"
+Red="\033[31m"
+Yellow="\033[33m"
+Blue="\033[36m"
+Font="\033[0m"
+GreenBG="\033[42;37m"
+RedBG="\033[41;37m"
+OK="${Green}[OK]${Font}"
+ERROR="${Red}[ERROR]${Font}"
+
+# 变量
+
+
+
+
+function print_ok() {
+  echo -e "${OK} ${Blue} $1 ${Font}"
+}
+
+function print_error() {
+  echo -e "${ERROR} ${RedBG} $1 ${Font}"
+}
+
 
 function CopyRight() {
   clear
@@ -31,7 +55,7 @@ function isRoot_Check(){
 if [[ $EUID -ne 0 ]]; then
   1>&2
   echo "================================================================"
-  echo "Error:当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
+  print_error "当前用户不是 root 用户,请切换到 root 用户重新执行脚本. . ." 
   echo "================================================================"
   echo -e "\n"
   sleep 1s
@@ -68,7 +92,7 @@ else
   fi
 
   echo "================================================================"
-  echo " 初始化完成. . . Pre-environment preparation. . . 【OK】"
+  print_ok " 初始化完成. . . Pre-environment preparation. . . 【OK】"
   echo " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
@@ -149,4 +173,4 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   esac
 }
 
-MENU
+
