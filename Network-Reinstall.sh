@@ -121,6 +121,7 @@ function CopyRight() {
 }
 
 function isRoot_Check() {
+  CopyRight
   if [[ 0 == "$UID" ]]; then
     echo "================================================================"
     print_ok "当前用户是 root 用户，开始安装流程. . ."
