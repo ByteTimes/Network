@@ -69,13 +69,13 @@ judgment_parameters() {
     esac
     shift
   done
-  if ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04==0)); then
+  if ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16==0)); then
     INSTALL='1'
-  elif ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04>1)); then
+  elif ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
     print_error '您只能选择一项操作'
     exit 1
   fi
-  if [[ "$INSTALL" -eq '1' ]] && ((temp_version+CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04>1)); then
+  if [[ "$INSTALL" -eq '1' ]] && ((temp_version+CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
     print_error"错误的版本信息，并且您只能选择一项操作"
     exit 1
   fi
