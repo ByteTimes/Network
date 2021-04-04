@@ -142,7 +142,6 @@ function System_Check(){
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   echo "================================================================"
   echo -e "\n"
-  sleep 2s
 
 if [ -f "/usr/bin/apt-get" ];then
   isDebian=`cat /etc/issue|grep Debian`
@@ -150,17 +149,17 @@ if [ -f "/usr/bin/apt-get" ];then
     echo 'Current system is Debian'
     apt-get install -y xz-utils openssl gawk file wget curl
     apt install -y xz-utils openssl gawk file wget curl
-    sleep 2s
+    sleep 1s
   else
     echo 'Current system is Ubuntu'
     apt-get install -y xz-utils openssl gawk file wget curl
     apt install -y xz-utils openssl gawk file wget curl
-    sleep 2s
+    sleep 1s
   fi
 else
     echo 'Current system is CentOS'
     yum install -y xz openssl gawk file wget curl
-    sleep 2s
+    sleep 1s
   fi
 
   echo "================================================================"
@@ -168,7 +167,6 @@ else
   print_ok " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
-  sleep 3s
 }
 
 Install_load(){
