@@ -164,7 +164,7 @@ else
   fi
 
   echo "================================================================"
-  print_ok " 初始化完成… Pre-environment preparation. . ."
+  print_ok " 初始化完成……  Pre-environment preparation. . ."
   print_ok " 开始系统安装  Start system installation. . . "
   echo "================================================================"
   echo -e "\n"
