@@ -88,8 +88,6 @@ judgment_parameters() {
   [[ "$Ubuntu_20" -eq '1' ]] && Ubuntu_20.04
   [[ "$Ubuntu_18" -eq '1' ]] && Ubuntu_18.04
   [[ "$Ubuntu_16" -eq '1' ]] && Ubuntu_16.04
-
-     sleep 20s
 }
 
 
