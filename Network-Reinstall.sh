@@ -22,9 +22,9 @@ CentOS_7='0'
 CentOS_6='0'
 Debian_10='0'
 Debian_9='0'
-Ubuntu_20.04='0'
-Ubuntu_18.04='0'
-Ubuntu_16.04='0'
+Ubuntu_20='0'
+Ubuntu_18='0'
+Ubuntu_16='0'
 SPECIFIED_VERSION=''
 
 
@@ -49,13 +49,13 @@ judgment_parameters() {
         Debian_9='1'
         ;;
       '-Ubuntu_20.04')
-        Ubuntu_20.04='1'
+        Ubuntu_20='1'
         ;;
       '-Ubuntu_18.04')
-        Ubuntu_18.04='1'
+        Ubuntu_18='1'
         ;;
       '-Ubuntu_16.04')
-        Ubuntu_16.04='1'
+        Ubuntu_16='1'
         ;;
       '--version')
         if [[ -z "$2" ]]; then
@@ -85,9 +85,9 @@ judgment_parameters() {
   [[ "$CentOS_6" -eq '1' ]] && CentOS_6
   [[ "$Debian_10" -eq '1' ]] && Debian_10
   [[ "$Debian_9" -eq '1' ]] && Debian_9
-  [[ "$Ubuntu_20.04" -eq '1' ]] && Ubuntu_20.04
-  [[ "$Ubuntu_18.04" -eq '1' ]] && Ubuntu_18.04
-  [[ "$Ubuntu_16.04" -eq '1' ]] && Ubuntu_16.04
+  [[ "$Ubuntu_20" -eq '1' ]] && Ubuntu_20.04
+  [[ "$Ubuntu_18" -eq '1' ]] && Ubuntu_18.04
+  [[ "$Ubuntu_16" -eq '1' ]] && Ubuntu_16.04
 
      sleep 20s
 }
