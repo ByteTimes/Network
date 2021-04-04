@@ -16,9 +16,79 @@ RedBG="\033[41;37m"
 OK="${Green}[OK]${Font}"
 ERROR="${Red}[ERROR]${Font}"
 
-# 变量
+# 全局设置
+CentOS_8='0'
+CentOS_7='0'
+CentOS_6='0'
+Debian_10='0'
+Debian_9='0'
+Ubuntu_20.04='0'
+Ubuntu_18.04='0'
+Ubuntu_16.04='0'
+SPECIFIED_VERSION=''
 
 
+# 参数判断选择
+judgment_parameters() {
+  local temp_version='0'
+  while [[ "$#" -gt '0' ]]; do
+    case "$1" in
+      '-CentOS_8')
+        CentOS_8='1'
+        ;;
+      '-CentOS_7')
+        CentOS_7='1'
+        ;;
+      '-CentOS_6')
+        CentOS_6='1'
+        ;;
+      '-Debian_10')
+        Debian_10='1'
+        ;;
+      '-Debian_9')
+        Debian_9='1'
+        ;;
+      '-Ubuntu_20.04')
+        Ubuntu_20.04='1'
+        ;;
+      '-Ubuntu_18.04')
+        Ubuntu_18.04='1'
+        ;;
+      '-Ubuntu_16.04')
+        Ubuntu_16.04='1'
+        ;;
+      '--version')
+        if [[ -z "$2" ]]; then
+          print_error "error: Please specify the correct version."
+          exit 1
+        fi
+        temp_version='1'
+        SPECIFIED_VERSION="$2"
+        shift
+        ;;
+    esac
+    shift
+  done
+  if ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04==0)); then
+    INSTALL='1'
+  elif ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04>1)); then
+    print_error '您只能选择一项操作'
+    exit 1
+  fi
+  if [[ "$INSTALL" -eq '1' ]] && ((temp_version+CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20.04+Ubuntu_18.04+Ubuntu_16.04>1)); then
+    print_error"错误的版本信息，并且您只能选择一项操作"
+    exit 1
+  fi
+  # Parameter information
+  [[ "$CentOS_8" -eq '1' ]] && CentOS_8
+  [[ "$CentOS_7" -eq '1' ]] && CentOS_7
+  [[ "$CentOS_6" -eq '1' ]] && CentOS_6
+  [[ "$Debian_10" -eq '1' ]] && Debian_10
+  [[ "$Debian_9" -eq '1' ]] && Debian_9
+  [[ "$Ubuntu_20.04" -eq '1' ]] && Ubuntu_20.04
+  [[ "$Ubuntu_18.04" -eq '1' ]] && Ubuntu_18.04
+  [[ "$Ubuntu_16.04" -eq '1' ]] && Ubuntu_16.04
+}
 
 
 function print_ok() {
@@ -149,14 +219,14 @@ function MENU() {
   echo -ne "\n请输入数字 Enter the System Identification Nnumber : "
   read Num
   case $Num in
-    1) -CentOS_8 ;;
-    2) -CentOS_7 ;;
-    3) -CentOS_6 ;;
-    4) -Debian_10 ;;
-    5) -Debian_9 ;;
-    6) -Ubuntu_20.04 ;;
-    7) -Ubuntu_18.04 ;;
-    8) -Ubuntu_16.04;;
+    1) CentOS_8 ;;
+    2) CentOS_7 ;;
+    3) CentOS_6 ;;
+    4) Debian_10 ;;
+    5) Debian_9 ;;
+    6) Ubuntu_20.04 ;;
+    7) Ubuntu_18.04 ;;
+    8) Ubuntu_16.04;;
     9)
       echo -e "\n"
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
@@ -172,14 +242,11 @@ function MENU() {
   esac
 }
 
-function -CentOS_8() {
-  if [ $1 = '-CentOS_8' ]
-    then
+function CentOS_8() {
   System_Check
   Install_load
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
   bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware 
-  fi
 }
 
 
