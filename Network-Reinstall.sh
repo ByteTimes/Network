@@ -99,6 +99,12 @@ else
   sleep 3s
 }
 
+Install_load(){
+if [ -f "/tmp/Core_Install.sh" ]; then
+    rm -f /tmp/Core_Install.sh
+  fi
+  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
+}
 
 function MENU() {
   echo -e "\n\n\n"
@@ -140,16 +146,42 @@ function MENU() {
   echo "=  0) Exit                                                     ="
   echo "=                                                              ="
   echo "================================================================"
-  echo -ne "\nEnter the System Identification Nnumber (for example: 0)"
-}
-
-Install_start(){
-if [ -f "/tmp/Core_Install.sh" ]; then
-    rm -f /tmp/Core_Install.sh
-  fi
-  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
+  echo -ne "\n请输入数字 Enter the System Identification Nnumber : "
   read Num
   case $Num in
+    1) -CentOS_8 ;;
+    2) -CentOS_7 ;;
+    3) -CentOS_6 ;;
+    4) -Debian_10 ;;
+    5) -Debian_9 ;;
+    6) -Ubuntu_20.04 ;;
+    7) -Ubuntu_18.04 ;;
+    8) -Ubuntu_16.04;;
+    9)
+      echo -e "\n"
+      read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
+      echo -e "\n"
+      read -r -p "你确定要重装系统 Are you sure start reinstall? [Y/n]: " input
+      case $input in
+        [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" ;;
+        *) clear; echo "已被用户取消. . .Canceled by user. . ."; exit 1;;
+      esac
+      ;;
+    0) exit 0;;
+    *) echo "错误输入，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
+  esac
+}
+
+function -CentOS_8() {
+  System_Check
+  Install_load
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware ;;
+}
+
+
+
+
+function -CentOS_7() {
   	1) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh  -c 8-stream -v 64 -a -firmware ;;
     2) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware ;;
     3) echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware ;;
@@ -173,4 +205,6 @@ if [ -f "/tmp/Core_Install.sh" ]; then
   esac
 }
 
+isRoot_Check
+MENU
 
