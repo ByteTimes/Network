@@ -133,7 +133,6 @@ function isRoot_Check() {
     print_error "当前用户不是root用户,请切换到root用户重新执行脚本" 
     echo "================================================================"
     echo -e "\n"
-    sleep 1s
     exit 1
   fi
 }
