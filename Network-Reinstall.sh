@@ -278,6 +278,7 @@ function Mirror_Check() {
   fi
 
   if [ "$isAuto" == '0' ]; then
+    echo -e "\n"
     print_ok "使用默认DHCP模式 Using DHCP mode."
   else
     print_ok "IP: $MAINIP"
