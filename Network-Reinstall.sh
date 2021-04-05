@@ -117,7 +117,7 @@ function CopyRight() {
   echo "      │       Default root password: dreamstart.site                         │"
   echo "      │       --------------------------------------------------------       │"
   echo "      └──────────────────────────────────────────────────────────────────────┘"
-  echo "1"
+  echo "2"
   echo -e "\n"
 }
 
