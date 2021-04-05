@@ -224,13 +224,12 @@ function Install_start() {
     rm -f /tmp/Core_Install.sh
   fi
   wget --no-check-certificate -qO /tmp/Core_Install.sh '"$INScript"' && chmod a+x /tmp/Core_Install.sh
-  POINT="echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; "
 }
 
 function CentOS_8() {
   System_Check
   Install_start
-  print_ok "$POINT"
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   wget --no-check-certificate -qO- install.sh "$INScript" && bash Install.sh -c 8 -v 64 -a -firmware 
 }
 
