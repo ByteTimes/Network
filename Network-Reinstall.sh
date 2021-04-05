@@ -28,15 +28,15 @@ Ubuntu_16='0'
 SPECIFIED_VERSION=''
 
 function print_ok() {
-  echo "----------------------------------------------------------------------------------------"
+  echo "-------------------------------------------------------------------------------------"
   echo -e "${OK} ${Blue} $1 ${Font}"
-  echo "----------------------------------------------------------------------------------------"
+  echo "-------------------------------------------------------------------------------------"
 }
 
 function print_error() {
-  echo "---------------------------------------------------------------------------------------------------------------------"
+  echo "-------------------------------------------------------------------------------------"
   echo -e "${ERROR} ${RedBG} $1 ${Font}"
-  echo "---------------------------------------------------------------------------------------------------------------------"
+  echo "-------------------------------------------------------------------------------------"
 }
 
 # 参数判断选择
@@ -117,7 +117,6 @@ function CopyRight() {
   echo "      │       Default root password: dreamstart.site                         │"
   echo "      │       --------------------------------------------------------       │"
   echo "      └──────────────────────────────────────────────────────────────────────┘"
-  echo "2"
   echo -e "\n"
 }
 
@@ -163,42 +162,42 @@ function MENU() {
   clear
   echo -e "\n"
   echo "                                                           "
-  echo "================================================================"
-  echo "=                                                              ="
-  echo "=           一键网络重装系统 （图形化安装）                    ="
-  echo "=        Network-Reinstall-System (Graphical Install)          ="
-  echo "=                                                              ="
-  echo "=                                https://www.dreamstart.site   ="
-  echo "=                                                              ="
-  echo "================================================================"
-  echo "=   --------------------------------------------------------   ="
-  echo "=   默认root密码：dreamstart.site                              ="
-  echo "=   Default root password: dreamstart.site                     ="
-  echo "=   --------------------------------------------------------   ="
-  echo "================================================================"
-  echo "=                                                              ="
-  echo "=  选择你想安装的系统 Which System Install:                    ="
-  echo "=                                                              ="
-  echo "=  1) Latest 【CentOS 8】(DD Image)                            ="                                                           
-  echo "=  2) Latest 【CentOS 7】(DD Image)                            ="
-  echo "=  3) Latest 【CentOS 6】                                      ="
-  echo "=                                                              ="
-  echo "=  4) Latest 【Debian 10】(Recommend)                          ="
-  echo "=  5) Latest 【Debian 9】                                      ="
-  echo "=                                                              ="
-  echo "=  6) Latest 【Ubuntu 20.04】(Recommend)                       ="
-  echo "=  7) Latest 【Ubuntu 18.04】                                  ="
-  echo "=  8) Latest 【Ubuntu 16.04】                                  ="
-  echo "=                                                              ="
-  echo "= ======安装其他系统请确保系统来源可靠，否则不建议使用。====== ="
-  echo "= ======   Please make sure the source of the system    ====== ="
-  echo "= ====== is reliable, otherwise it is not recommended.  ====== ="
-  echo "=                                                              ="
-  echo "=  9) Latest 【DD System】                                     ="
-  echo "=  0) Exit                                                     ="
-  echo "=                                                              ="
-  echo "================================================================"
-  echo -ne "\n请输入数字选择 Enter the System Identification Nnumber : "
+  echo "      ┌──────────────────────────────────────────────────────────────────────┐"
+  echo "      │                                                                      │"
+  echo "      │               一键网络重装系统 （图形化安装）                        │"
+  echo "      │            Network-Reinstall-System (Graphical Install)              │"
+  echo "      │                                                                      │"
+  echo "      │                                    https://www.dreamstart.site       │"
+  echo "      │                                                                      │"
+  echo "      │──────────────────────────────────────────────────────────────────────│"
+  echo "      │       --------------------------------------------------------       │"
+  echo "      │       默认root密码：dreamstart.site                                  │"
+  echo "      │       Default root password: dreamstart.site                         │"
+  echo "      │       --------------------------------------------------------       │"
+  echo "      └──────────────────────────────────────────────────────────────────────┘"
+  echo "      │                                                                      │"
+  echo "      │  选择你想安装的系统 Which System Install:                    │"
+  echo "      │                                                                      │"
+  echo "      │  1) Latest 【CentOS 8】(DD Image)                            │"                                                           
+  echo "      │  2) Latest 【CentOS 7】(DD Image)                            │"
+  echo "      │  3) Latest 【CentOS 6】                                      │"
+  echo "      │                                                                      │"
+  echo "      │  4) Latest 【Debian 10】(Recommend)                          │"
+  echo "      │  5) Latest 【Debian 9】                                      │"
+  echo "      │                                                                      │"
+  echo "      │  6) Latest 【Ubuntu 20.04】(Recommend)                       │"
+  echo "      │  7) Latest 【Ubuntu 18.04】                                  │"
+  echo "      │  8) Latest 【Ubuntu 16.04】                                  │"
+  echo "      │                                                                      │"
+  echo "      │ ======安装其他系统请确保系统来源可靠，否则不建议使用。====== │"
+  echo "      │ ======   Please make sure the source of the system    ====== │"
+  echo "      │ ====== is reliable, otherwise it is not recommended.  ====== │"
+  echo "      │                                                                      │"
+  echo "      │  9) Latest 【DD System】                                     │"
+  echo "      │  0) Exit                                                     │"
+  echo "      │                                                                      │"
+  echo "      └──────────────────────────────────────────────────────────────────────┘"
+  echo -ne "\n  请输入数字选择 Enter the System Identification Nnumber : "
   read Num
   case $Num in
     1) CentOS_8 ;;
@@ -211,11 +210,11 @@ function MENU() {
     8) Ubuntu_16.04;;
     9)
       echo -e "\n"
-      read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
-      read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+      read -r -p " 请输入系统镜像地址 Custom image URL: " imgURL
+      read -s -n1 -p " 按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
       bash /tmp/Core_Install.sh -dd "$imgURL" ;;
     0) exit 0;;
-    *) echo "错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
+    *) echo " 错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
   esac
 }
 
