@@ -356,6 +356,9 @@ function MENU() {
     8) Ubuntu_16.04;;
     9)
       echo -e "\n"
+      CopyRight
+      Install_start
+      line
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
       read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
       bash /tmp/Core_Install.sh -dd "$imgURL" ;;
