@@ -219,10 +219,12 @@ function SetNetwork() {
   fi
 }
 
+
 function NetMode() {
+  CopyRight
+
   if [ "$isAuto" == '0' ]; then
-    read -r -p input
-    print_ok " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
+    read -r -p "是否使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -234,15 +236,15 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      print_ok " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
+      echo -e "未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually..\n"
       UpdateIp
     else
+      CopyRight
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
       echo -e "\n"
-      print_ok "是否确认 Confirm? [Y/n]:"
-      read -r -p input
+      read -r -p "是否确认 Confirm? [Y/n]:" input
       case $input in
         [yY][eE][sS]|[yY]) ;;
         [nN][oO]|[nN])
@@ -251,11 +253,11 @@ function NetMode() {
           ipCheck
           [[ $? -ne 0 ]] && {
             clear
-            print_error " 输入错误,自动退出 INPUT Error，Auto Exit. . . \n"
+            echo -e "输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
             exit 1
           }
         ;;
-        *) print_error " 已被用户取消 Canceled by User. . ."; exit 1;;
+        *) clear; echo "已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
@@ -359,9 +361,9 @@ function Install_start() {
   Mirror_Check
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
-    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
-    echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   fi
+  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
 }
 
 function CentOS_8() {
