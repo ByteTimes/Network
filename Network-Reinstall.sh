@@ -219,10 +219,9 @@ function MENU() {
 }
 
 function Install_start() {
-  INScript="https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh"
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
-    wget --no-check-certificate -qO /tmp/Core_Install.sh '"$INScript"' && chmod a+x /tmp/Core_Install.sh
+    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/Core_Install.sh
   fi
 }
 
