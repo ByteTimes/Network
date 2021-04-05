@@ -222,59 +222,59 @@ function Install_start() {
   INScript="https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh"
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
+    wget --no-check-certificate -qO /tmp/Core_Install.sh '"$INScript"' && chmod a+x /tmp/Core_Install.sh
   fi
-  wget --no-check-certificate -qO /tmp/Core_Install.sh '"$INScript"' && chmod a+x /tmp/Core_Install.sh
 }
 
 function CentOS_8() {
   System_Check
   Install_start
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
-  wget --no-check-certificate -qO- install.sh "$INScript" && bash Install.sh -c 8 -v 64 -a -firmware 
+  bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware 
 }
 
 function CentOS_7() {
   System_Check
   Install_start
-  print_ok "$POINT"
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
 }
 
 function CentOS_6() {
   System_Check
   Install_start
-  print_ok "$POINT"
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware
 }
 
 function Debian_10() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  "$INSTART" -d 10 -v 64 -a -firmware 
+  bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware 
 }
 
 function Debian_9() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  "$INSTART" -d 9 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware
 }
 
 function Ubuntu_20.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  "$INSTART" -u 20.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware
 }
 
 function Ubuntu_18.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  "$INSTART" -u 18.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware
 }
 
 function Ubuntu_16.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  "$INSTART" -u 16.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware
 }
 
 
