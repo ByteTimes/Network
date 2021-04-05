@@ -139,16 +139,16 @@ function System_Check(){
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
     print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
-    INS="yum install"
+    INS="yum install -y"
     yum update
     $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
     print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
-    INS="apt-get install"
+    INS="apt-get install -y"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
     print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
-    INS="apt-get install"
+    INS="apt-get install -y"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
    else
@@ -169,7 +169,6 @@ function isValidIp() {
   fi
   return $ret
 }
-
 
 function ipCheck() {
   isLegal=0
@@ -222,7 +221,6 @@ function SetNetwork() {
   fi
 }
 
-
 function NetMode() {
   CopyRight
   line
@@ -243,7 +241,7 @@ function NetMode() {
       UpdateIp
     else
       CopyRight
-      print_ok
+      line
       echo " IP: $MAINIP"
       echo " Gateway: $GATEWAYIP"
       echo " Netmask: $NETMASK"
@@ -257,11 +255,11 @@ function NetMode() {
           ipCheck
           [[ $? -ne 0 ]] && {
             clear
-            echo -e "输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
+            echo -e " 输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
             exit 1
           }
         ;;
-        *) clear; echo "已被用户取消 Canceled by User. . ."; exit 1;;
+        *) clear; echo " 已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
@@ -337,6 +335,7 @@ function MENU() {
   echo "      │      0) Exit                                                         │"
   echo "      │                                                                      │"
   echo "      └──────────────────────────────────────────────────────────────────────┘"
+  line
   print_ok " 请输入数字选择 Enter the System Identification Nnumber : "
   read Num
   case $Num in
