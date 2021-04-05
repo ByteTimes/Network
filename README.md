@@ -19,28 +19,34 @@
 
 ### 特性/优化：
 ```
-自动获取IP地址、网关、子网掩码
-自动判断网络环境，选择国内/外镜像，再也不用担心卡半天了
-超级懒人一键化，无需复杂的命令
-解决萌咖脚本中一些导致安装错误的问题
-CentOS 7 镜像抛弃LVM，回归ext4，减少不稳定因素
+自动获取IP地址、网关、子网掩码，可以手动配置网络参数，傻瓜式操作
+自动判断网络环境，选择国内/外镜像，避免因网络卡顿等候
+超级懒人一键进入图形化安装界面，无需复杂的命令，脚本支持参数直接安装想要的系统
 ```
 ### 支持重装的系统：
 ```
 Debian 9/10
-Ubuntu 18.04/16.04
-CentOS 6/7
-自定义DD镜像
+Ubuntu 20.04/18.04/16.04
+CentOS 6.10
+自定义DD镜像Windows/CentOS 7+系统
 ```
 
 ### 使用方法：
 ```
 bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
-
-或
-
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/Network-Reinstall.sh')
 ```
+### 支持的参数：
+```
+Debian 10：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Debian_10
+Debian 9：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Debian_9
+
+Ubuntu_20.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_20.04
+Ubuntu_18.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_18.04
+Ubuntu_16.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_16.04
+
+CentOS 6：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -CentOS_6
+```
+
 ### 初始密码：
 ```
 - 默认用户名：root
