@@ -136,16 +136,16 @@ function System_Check(){
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
     print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
-    INS="yum install -y"
+    INS="yum install"
     yum update
     $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
     print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
-    INS="apt-get install -y"
+    INS="apt-get install"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
     print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
-    INS="apt-get install -y"
+    INS="apt-get install"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
    else
