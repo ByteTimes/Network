@@ -29,7 +29,7 @@ SPECIFIED_VERSION=''
 
 function print_info() {
   echo "-------------------------------------------------------------------------------------"
-  echo -e "${INFO} ${Blue} $1 ${Font}"
+  echo -e "${信息} ${Blue} $1 ${Font}"
 }
 function print_ok() {
   echo "-------------------------------------------------------------------------------------"
@@ -137,7 +137,7 @@ function isRoot_Check() {
 function System_Check(){
   CopyRight
   source '/etc/os-release'
-  print_info " 安装环境准备中 Pre-environment preparation. . ."
+  print_ok " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
     print_info " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
     INS="yum install"
@@ -157,7 +157,7 @@ function System_Check(){
     exit 1
   fi
   print_ok " 初始化完成 Pre-environment preparation. . ."
-  print_info " 开始系统安装  Start system installation. . . "
+  print_ok " 开始系统安装  Start system installation. . . "
 }
 
 function isValidIp() {
@@ -226,7 +226,7 @@ function SetNetwork() {
 function NetMode() {
   if [ "$isAuto" == '0' ]; then
     read -r -p input
-    print_info " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
+    print_ok " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -238,14 +238,14 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      print_info  " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
+      print_ok " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
       UpdateIp
     else
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
       echo -e "\n"
-      print_info "是否确认 Confirm? [Y/n]:"
+      print_ok "是否确认 Confirm? [Y/n]:"
       read -r -p input
       case $input in
         [yY][eE][sS]|[yY]) ;;
@@ -259,7 +259,7 @@ function NetMode() {
             exit 1
           }
         ;;
-        *) print_error "已被用户取消 Canceled by User. . ."; exit 1;;
+        *) print_error " 已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
@@ -274,14 +274,14 @@ function Mirror_Check() {
   fi
 
   if [ "$isAuto" == '0' ]; then
-    print_info "使用默认DHCP模式 Using DHCP mode."
+    print_ok " 使用默认DHCP模式 Using DHCP mode."
   else
     echo "IP: $MAINIP"
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
   fi
 
-  [[ "$isCN" == '1' ]] && print_info "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
+  [[ "$isCN" == '1' ]] && print_ok "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
 
   CMIRROR=''
   CVMIRROR=''
