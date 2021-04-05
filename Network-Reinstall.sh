@@ -197,7 +197,7 @@ function MENU() {
   echo "      │      0) Exit                                                         │"
   echo "      │                                                                      │"
   echo "      └──────────────────────────────────────────────────────────────────────┘"
-  echo -ne "\n  请输入数字选择 Enter the System Identification Nnumber : "
+  print_ok " 请输入数字选择 Enter the System Identification Nnumber : "
   read Num
   case $Num in
     1) CentOS_8 ;;
