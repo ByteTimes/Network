@@ -28,6 +28,15 @@ Ubuntu_16='0'
 SPECIFIED_VERSION=''
 
 
+function print_ok() {
+  echo -e "${OK} ${Blue} $1 ${Font}"
+}
+
+function print_error() {
+  echo -e "${ERROR} ${RedBG} $1 ${Font}"
+}
+
+
 # 参数判断选择
 judgment_parameters() {
   local temp_version='0'
@@ -59,7 +68,7 @@ judgment_parameters() {
         ;;
       '--version')
         if [[ -z "$2" ]]; then
-          print_error "error: Please specify the correct version."
+          print_error "Please specify the correct version."
           exit 1
         fi
         temp_version='1'
@@ -89,16 +98,6 @@ judgment_parameters() {
   [[ "$Ubuntu_18" -eq '1' ]] && Ubuntu_18.04
   [[ "$Ubuntu_16" -eq '1' ]] && Ubuntu_16.04
 }
-
-
-function print_ok() {
-  echo -e "${OK} ${Blue} $1 ${Font}"
-}
-
-function print_error() {
-  echo -e "${ERROR} ${RedBG} $1 ${Font}"
-}
-
 
 function CopyRight() {
   clear
@@ -138,30 +137,27 @@ function isRoot_Check() {
 
 function System_Check(){
   CopyRight
+  source '/etc/os-release'
   echo "================================================================"
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   echo "================================================================"
   echo -e "\n"
+  if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
+    print_ok "当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    INS="yum install -y"
+    $INS xz openssl gawk file wget curl
 
-if [ -f "/usr/bin/apt-get" ];then
-  isDebian=`cat /etc/issue|grep Debian`
-  if [ "$isDebian" != "" ];then
-    echo 'Current system is Debian'
-    apt-get install -y xz-utils openssl gawk file wget curl
-    apt install -y xz-utils openssl gawk file wget curl
-    sleep 1s
-  else
-    echo 'Current system is Ubuntu'
-    apt-get install -y xz-utils openssl gawk file wget curl
-    apt install -y xz-utils openssl gawk file wget curl
-    sleep 1s
+  elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
+    print_ok "当前系统为 Debian ${VERSION_ID} ${VERSION}"
+    INS="apt install -y"
+  elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
+    print_ok "当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
+    INS="apt install -y"
+    $INS xz-utils openssl gawk file wget curl
+   else
+    print_error "当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
+    exit 1
   fi
-else
-    echo 'Current system is CentOS'
-    yum install -y xz openssl gawk file wget curl
-    sleep 1s
-  fi
-
   echo "================================================================"
   print_ok " 初始化完成……  Pre-environment preparation. . ."
   print_ok " 开始系统安装  Start system installation. . . "
@@ -247,6 +243,7 @@ function CentOS_8() {
   Install_load
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
   bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware 
+  EXIT 1
 }
 
 function CentOS_7() {
