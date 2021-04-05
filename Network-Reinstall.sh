@@ -258,6 +258,8 @@ function NetMode() {
           ipCheck
           [[ $? -ne 0 ]] && {
             clear
+            CopyRight
+            line
             echo -e " 输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
             exit 1
           }
