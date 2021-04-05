@@ -274,9 +274,9 @@ function Mirror_Check() {
   if [ "$isAuto" == '0' ]; then
     print_ok " 使用默认DHCP模式 Using DHCP mode."
   else
-    echo "IP: $MAINIP"
-    echo "Gateway: $GATEWAYIP"
-    echo "Netmask: $NETMASK"
+    print_ok "IP: $MAINIP"
+    print_ok "Gateway: $GATEWAYIP"
+    print_ok "Netmask: $NETMASK"
   fi
 
   [[ "$isCN" == '1' ]] && print_ok "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
