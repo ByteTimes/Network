@@ -229,7 +229,7 @@ function CentOS_8() {
   System_Check
   Install_start
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
-  bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware ;;
+  bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware
 }
 
 function CentOS_7() {
