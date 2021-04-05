@@ -83,11 +83,11 @@ judgment_parameters() {
   if ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16==0)); then
     INSTALL='1'
   elif ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
-    print_error " 您只能选择一项操作 "
+    print_error "您只能选择一项操作 "
     exit 1
   fi
   if [[ "$INSTALL" -eq '1' ]] && ((temp_version+CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
-    print_error" 错误的版本信息，并且您只能选择一项操作"
+    print_error"错误的版本信息，并且您只能选择一项操作"
     exit 1
   fi
   # Parameter information
@@ -136,29 +136,29 @@ function System_Check(){
   CopyRight
   line
   source '/etc/os-release'
-  print_ok " 安装环境准备中 Pre-environment preparation. . ."
+  print_ok "安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
-    print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    print_ok "当前系统为 Centos ${VERSION_ID} ${VERSION}"
     INS="yum install -y"
     yum update
     $INS xz openssl gawk file wget curl
      sleep 3s
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
-    print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
+    print_ok "当前系统为 Debian ${VERSION_ID} ${VERSION}"
     INS="apt-get install -y"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
-    print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
+    print_ok "当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
     INS="apt-get install -y"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
      sleep 3s
    else
-    print_error " 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
+    print_error "当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
-  print_ok " 初始化完成 Pre-environment preparation. . ."
-  print_ok " 开始系统安装  Start system installation. . . "
+  print_ok "初始化完成 Pre-environment preparation. . ."
+  print_ok "开始系统安装  Start system installation. . . "
    sleep 3s
 }
 
@@ -193,9 +193,9 @@ function GetIp() {
 }
 
 function UpdateIp() {
-  read -r -p " Your IP: " MAINIP
-  read -r -p " Your Gateway: " GATEWAYIP
-  read -r -p " Your Netmask: " NETMASK
+  read -r -p "Your IP: " MAINIP
+  read -r -p "Your Gateway: " GATEWAYIP
+  read -r -p "Your Netmask: " NETMASK
 }
 
 function SetNetwork() {
@@ -228,7 +228,7 @@ function NetMode() {
   CopyRight
   line
   if [ "$isAuto" == '0' ]; then
-    read -r -p " 是否使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
+    read -r -p "是否使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -240,16 +240,16 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      echo -e " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually..\n"
+      echo -e "未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually..\n"
       UpdateIp
     else
       CopyRight
       line
-      echo " IP: $MAINIP"
-      echo " Gateway: $GATEWAYIP"
-      echo " Netmask: $NETMASK"
+      echo "IP: $MAINIP"
+      echo "Gateway: $GATEWAYIP"
+      echo "Netmask: $NETMASK"
       echo -e "\n"
-      read -r -p " 是否确认 Confirm? [Y/n]:" input
+      read -r -p "是否确认 Confirm? [Y/n]:" input
       case $input in
         [yY][eE][sS]|[yY]) ;;
         [nN][oO]|[nN])
@@ -260,11 +260,10 @@ function NetMode() {
             clear
             CopyRight
             line
-            echo -e " 输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
+            echo -e "输入错误,自动退出 INPUT Error，Auto Exit. . .\n"
             exit 1
           }
         ;;
-        *) clear; echo " 已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
@@ -279,7 +278,7 @@ function Mirror_Check() {
   fi
 
   if [ "$isAuto" == '0' ]; then
-    print_ok " 使用默认DHCP模式 Using DHCP mode."
+    print_ok "使用默认DHCP模式 Using DHCP mode."
   else
     print_ok "IP: $MAINIP"
     print_ok "Gateway: $GATEWAYIP"
@@ -354,11 +353,11 @@ function MENU() {
     8) Ubuntu_16.04;;
     9)
       echo -e "\n"
-      read -r -p " 请输入系统镜像地址 Custom image URL: " imgURL
-      read -s -n1 -p " 按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+      read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
+      read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
       bash /tmp/Core_Install.sh -dd "$imgURL" ;;
     0) exit 0;;
-    *) echo " 错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
+    *) echo "错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
   esac
 }
 
