@@ -224,48 +224,48 @@ function MENU() {
 function CentOS_8() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -c 8 -v 64 -a -firmware 
+  "$INSTART" -c 8 -v 64 -a -firmware 
 }
 
 function CentOS_7() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;  
-  $INSTART -c 7.9.2009 -v 64 -a -firmware
+  "$INSTART" -c 7.9.2009 -v 64 -a -firmware
 }
 function CentOS_6() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART  -c 6.10 -v 64 -a -firmware 
+  "$INSTART"  -c 6.10 -v 64 -a -firmware 
 }
 
 function Debian_10() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -d 10 -v 64 -a -firmware 
+  "$INSTART" -d 10 -v 64 -a -firmware 
 }
 
 function Debian_9() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -d 9 -v 64 -a -firmware
+  "$INSTART" -d 9 -v 64 -a -firmware
 }
 
 function Ubuntu_20.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -u 20.04 -v 64 -a -firmware
+  "$INSTART" -u 20.04 -v 64 -a -firmware
 }
 
 function Ubuntu_18.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -u 18.04 -v 64 -a -firmware
+  "$INSTART" -u 18.04 -v 64 -a -firmware
 }
 
 function Ubuntu_16.04() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
-  $INSTART -u 16.04 -v 64 -a -firmware
+  "$INSTART" -u 16.04 -v 64 -a -firmware
 }
 
 
