@@ -34,11 +34,19 @@ CentOS 6.10
 ### 使用方法：
 ```
 bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh)
-
-或
-
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/Network-Reinstall.sh')
 ```
+### 支持的参数：
+```
+Debian 10：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Debian_10
+Debian 9：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Debian_9
+
+Ubuntu_20.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_20.04
+Ubuntu_18.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_18.04
+Ubuntu_16.04：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -Ubuntu_16.04
+
+CentOS 6：bash <(curl -L https://savilelee.github.io/Network/Network-Reinstall.sh) -CentOS_6
+```
+
 ### 初始密码：
 ```
 - 默认用户名：root
