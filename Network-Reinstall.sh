@@ -156,6 +156,140 @@ function System_Check(){
   print_ok " 开始系统安装  Start system installation. . . "
 }
 
+function isValidIp() {
+  local ip=$1
+  local ret=1
+  if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+    ip=(${ip//\./ })
+    [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]
+    ret=$?
+  fi
+  return $ret
+}
+
+
+function ipCheck() {
+  isLegal=0
+  for add in $MAINIP $GATEWAYIP $NETMASK; do
+    isValidIp $add
+    if [ $? -eq 1 ]; then
+      isLegal=1
+    fi
+  done
+  return $isLegal
+}
+
+function GetIp() {
+  MAINIP=$(ip route get 1 | awk -F 'src ' '{print $2}' | awk '{print $1}')
+  GATEWAYIP=$(ip route | grep default | awk '{print $3}' | head -1)
+  SUBNET=$(ip -o -f inet addr show | awk '/scope global/{sub(/[^.]+\//,"0/",$4);print $4}' | head -1 | awk -F '/' '{print $2}')
+  value=$(( 0xffffffff ^ ((1 << (32 - $SUBNET)) - 1) ))
+  NETMASK="$(( (value >> 24) & 0xff )).$(( (value >> 16) & 0xff )).$(( (value >> 8) & 0xff )).$(( value & 0xff ))"
+}
+
+function UpdateIp() {
+  read -r -p "Your IP: " MAINIP
+  read -r -p "Your Gateway: " GATEWAYIP
+  read -r -p "Your Netmask: " NETMASK
+}
+
+function SetNetwork() {
+  isAuto='0'
+  if [[ -f '/etc/network/interfaces' ]];then
+    [[ ! -z "$(sed -n '/iface.*inet static/p' /etc/network/interfaces)" ]] && isAuto='1'
+    [[ -d /etc/network/interfaces.d ]] && {
+      cfgNum="$(find /etc/network/interfaces.d -name '*.cfg' |wc -l)" || cfgNum='0'
+      [[ "$cfgNum" -ne '0' ]] && {
+        for netConfig in `ls -1 /etc/network/interfaces.d/*.cfg`
+        do
+          [[ ! -z "$(cat $netConfig | sed -n '/iface.*inet static/p')" ]] && isAuto='1'
+        done
+      }
+    }
+  fi
+
+  if [[ -d '/etc/sysconfig/network-scripts' ]];then
+    cfgNum="$(find /etc/network/interfaces.d -name '*.cfg' |wc -l)" || cfgNum='0'
+    [[ "$cfgNum" -ne '0' ]] && {
+      for netConfig in `ls -1 /etc/sysconfig/network-scripts/ifcfg-* | grep -v 'lo$' | grep -v ':[0-9]\{1,\}'`
+      do
+        [[ ! -z "$(cat $netConfig | sed -n '/BOOTPROTO.*[sS][tT][aA][tT][iI][cC]/p')" ]] && isAuto='1'
+      done
+    }
+  fi
+}
+
+function NetMode() {
+  if [ "$isAuto" == '0' ]; then
+    read -r -p " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
+    case $input in
+      [yY][eE][sS]|[yY]) NETSTR='' ;;
+      [nN][oO]|[nN]) isAuto='1' ;;
+      *) NETSTR='' ;;
+    esac
+  fi
+
+  if [ "$isAuto" == '1' ]; then
+    SetNetwork
+    GetIp
+    ipCheck
+    if [ $? -ne 0 ]; then
+      echo -e " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
+      UpdateIp
+    else
+      echo "IP: $MAINIP"
+      echo "Gateway: $GATEWAYIP"
+      echo "Netmask: $NETMASK"
+      echo -e "\n"
+      read -r -p "是否确认 Confirm? [Y/n]:" input
+      case $input in
+        [yY][eE][sS]|[yY]) ;;
+        [nN][oO]|[nN])
+          echo -e "\n"
+          UpdateIp
+          ipCheck
+          [[ $? -ne 0 ]] && {
+            clear
+            echo -e " 输入错误,自动退出 INPUT Error，Auto Exit. . . \n"
+            exit 1
+          }
+        ;;
+        *) clear; echo "已被用户取消 Canceled by User. . ."; exit 1;;
+      esac
+    fi
+    NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
+  fi
+}
+
+function Mirror_Check() {
+  isCN='0'
+  geoip=$(wget --no-check-certificate -qO- https://api.ip.sb/geoip -T 10 | grep "\"country_code\":\"CN\"")
+  if [[ "$geoip" != "" ]];then
+    isCN='1'
+  fi
+
+  if [ "$isAuto" == '0' ]; then
+    echo "使用默认DHCP模式 Using DHCP mode."
+  else
+    echo "IP: $MAINIP"
+    echo "Gateway: $GATEWAYIP"
+    echo "Netmask: $NETMASK"
+  fi
+
+  [[ "$isCN" == '1' ]] && echo "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
+
+  CMIRROR=''
+  CVMIRROR=''
+  DMIRROR=''
+  UMIRROR=''
+  if [[ "$isCN" == '1' ]];then
+    CMIRROR="--mirror http://mirrors.aliyun.com/centos/"
+    CVMIRROR="--mirror http://mirrors.tuna.tsinghua.edu.cn/centos-vault/"
+    DMIRROR="--mirror http://mirrors.aliyun.com/debian/"
+    UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
+  fi
+}
+
 function MENU() {
   echo -e "\n\n\n"
   clear
@@ -218,60 +352,53 @@ function MENU() {
 }
 
 function Install_start() {
+  System_Check
+  NetMode
+  Mirror_Check
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
+    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
+    echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   fi
-  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
 }
 
 function CentOS_8() {
-  System_Check
   Install_start
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware
 }
 
 function CentOS_7() {
-  System_Check
   Install_start
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
 }
 
 function CentOS_6() {
-  System_Check
   Install_start
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;
   bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware
 }
 
 function Debian_10() {
-  System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  Install_start
   bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware 
 }
 
 function Debian_9() {
-  System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  Install_start
   bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware
 }
 
 function Ubuntu_20.04() {
-  System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  Install_start
   bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware
 }
 
 function Ubuntu_18.04() {
-  System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  Install_start
   bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware
 }
 
 function Ubuntu_16.04() {
-  System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  Install_start
   bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware
 }
 
