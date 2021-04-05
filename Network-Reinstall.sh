@@ -240,11 +240,12 @@ function NetMode() {
       UpdateIp
     else
       CopyRight
+      print_ok
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
       echo -e "\n"
-      read -r -p "        是否确认 Confirm? [Y/n]:" input
+      read -r -p "       是否确认 Confirm? [Y/n]:" input
       case $input in
         [yY][eE][sS]|[yY]) ;;
         [nN][oO]|[nN])
