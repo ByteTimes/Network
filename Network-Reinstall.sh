@@ -152,7 +152,7 @@ function System_Check(){
     print_error " 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
-  print_ok " 初始化完成……  Pre-environment preparation. . ."
+  print_ok " 初始化完成 Pre-environment preparation. . ."
   print_ok " 开始系统安装  Start system installation. . . "
 }
 
@@ -220,7 +220,7 @@ function MENU() {
 function Install_start() {
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
-    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && chmod a+x /tmp/Core_Install.sh
+    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
   fi
 }
 
