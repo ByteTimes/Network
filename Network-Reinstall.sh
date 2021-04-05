@@ -143,19 +143,19 @@ function System_Check(){
   echo "================================================================"
   echo -e "\n"
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
-    print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    print_ok "  当前系统为 Centos ${VERSION_ID} ${VERSION}"
     INS="yum install -y"
     $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
-    print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
+    print_ok "  当前系统为 Debian ${VERSION_ID} ${VERSION}"
     INS="apt install -y"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
-    print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
+    print_ok "  当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
     INS="apt install -y"
     $INS xz-utils openssl gawk file wget curl
    else
-    print_error " 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
+    print_error "  当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
   echo "================================================================"
