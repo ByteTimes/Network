@@ -237,14 +237,14 @@ function CentOS_8() {
 function CentOS_7() {
   System_Check
   Install_start
-  "$POINT"
+  print_ok "$POINT"
   bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
 }
 
 function CentOS_6() {
   System_Check
   Install_start
-  "$POINT"
+  print_ok "$POINT"
   bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware
 }
 
