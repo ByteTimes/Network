@@ -230,7 +230,6 @@ function NetMode() {
   fi
 
   if [ "$isAuto" == '1' ]; then
-    SetNetwork
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
@@ -353,6 +352,7 @@ function MENU() {
 
 function Install_start() {
   System_Check
+  SetNetwork
   NetMode
   Mirror_Check
   if [ -f "/tmp/Core_Install.sh" ]; then
