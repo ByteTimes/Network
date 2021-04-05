@@ -26,8 +26,6 @@ Ubuntu_20='0'
 Ubuntu_18='0'
 Ubuntu_16='0'
 SPECIFIED_VERSION=''
-INSTART="bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh')"
-POINT="echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; "
 
 function print_ok() {
   echo "---------------------------------------------------------------------------------------------------------------------"
@@ -40,7 +38,6 @@ function print_error() {
   echo -e "${ERROR} ${RedBG} $1 ${Font}"
   echo "---------------------------------------------------------------------------------------------------------------------"
 }
-
 
 # 参数判断选择
 judgment_parameters() {
@@ -221,15 +218,20 @@ function MENU() {
   esac
 }
 
+function Install_start() {
+  INSTART="wget --no-check-certificate -qO- INSTALL.sh 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh' && bash INSTALL.sh"
+  POINT="echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; "
+}
+
 function CentOS_8() {
   System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  "$POINT"
   "$INSTART" -c 8 -v 64 -a -firmware 
 }
 
 function CentOS_7() {
   System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;  
+  "$POINT"
   "$INSTART" -c 7.9.2009 -v 64 -a -firmware
 }
 function CentOS_6() {
