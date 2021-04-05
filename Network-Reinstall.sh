@@ -27,6 +27,10 @@ Ubuntu_18='0'
 Ubuntu_16='0'
 SPECIFIED_VERSION=''
 
+function print_info() {
+  echo "-------------------------------------------------------------------------------------"
+  echo -e "${INFO} ${Blue} $1 ${Font}"
+}
 function print_ok() {
   echo "-------------------------------------------------------------------------------------"
   echo -e "${OK} ${Blue} $1 ${Font}"
@@ -133,18 +137,18 @@ function isRoot_Check() {
 function System_Check(){
   CopyRight
   source '/etc/os-release'
-  print_ok " 安装环境准备中 Pre-environment preparation. . ."
+  print_info " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
-    print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    print_info " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
     INS="yum install"
     yum update
     $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
-    print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
+    print_info " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
     INS="apt-get install"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
-    print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
+    print_info " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
     INS="apt-get install"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
@@ -153,7 +157,7 @@ function System_Check(){
     exit 1
   fi
   print_ok " 初始化完成 Pre-environment preparation. . ."
-  print_ok " 开始系统安装  Start system installation. . . "
+  print_info " 开始系统安装  Start system installation. . . "
 }
 
 function isValidIp() {
@@ -221,7 +225,8 @@ function SetNetwork() {
 
 function NetMode() {
   if [ "$isAuto" == '0' ]; then
-    read -r -p " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
+    read -r -p input
+    print_ok " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
