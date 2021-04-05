@@ -359,7 +359,7 @@ function MENU() {
       line
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
       Install_start
-      bash /tmp/Core_Install.sh -dd "$imgURL" ;;
+      bash /tmp/Core_Install.sh $NETSTR -dd $imgURL $DMIRROR ;;
     0) exit 0;;
     *) echo "错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
   esac
@@ -379,42 +379,42 @@ function Install_start() {
 
 function CentOS_8() {
   Install_start
-  bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -c 8 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function CentOS_7() {
   Install_start
-  bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function CentOS_6() {
   Install_start
-  bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -c 6.10 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function Debian_10() {
   Install_start
-  bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware 
+  bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function Debian_9() {
   Install_start
-  bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function Ubuntu_20.04() {
   Install_start
-  bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function Ubuntu_18.04() {
   Install_start
-  bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 function Ubuntu_16.04() {
   Install_start
-  bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware
+  bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware $NETSTR $CMIRROR
 }
 
 
