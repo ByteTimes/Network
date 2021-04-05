@@ -85,11 +85,11 @@ judgment_parameters() {
   if ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16==0)); then
     INSTALL='1'
   elif ((CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
-    print_error '您只能选择一项操作'
+    print_error " 您只能选择一项操作 "
     exit 1
   fi
   if [[ "$INSTALL" -eq '1' ]] && ((temp_version+CentOS_8+CentOS_7+CentOS_6+Debian_10+Debian_9+Ubuntu_20+Ubuntu_18+Ubuntu_16>1)); then
-    print_error"错误的版本信息，并且您只能选择一项操作"
+    print_error" 错误的版本信息，并且您只能选择一项操作"
     exit 1
   fi
   # Parameter information
@@ -125,16 +125,10 @@ function CopyRight() {
 function isRoot_Check() {
   CopyRight
   if [[ 0 == "$UID" ]]; then
-    echo "================================================================"
     print_ok "当前用户是 root 用户，开始安装流程. . ."
-    echo "================================================================"
-    echo -e "\n"
     sleep 1s
   else
-    echo "================================================================"
     print_error "当前用户不是root用户,请切换到root用户重新执行脚本" 
-    echo "================================================================"
-    echo -e "\n"
     exit 1
   fi
 }
@@ -142,40 +136,27 @@ function isRoot_Check() {
 function System_Check(){
   CopyRight
   source '/etc/os-release'
-  echo "================================================================"
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
-  echo "================================================================"
-  echo -e "\n"
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
-    print_ok "  当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    print_ok " 当前系统为 Centos ${VERSION_ID} ${VERSION}"
     INS="yum install -y"
     yum update
     $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
-    print_ok "  当前系统为 Debian ${VERSION_ID} ${VERSION}"
+    print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
     INS="apt-get install -y"
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
-    print_ok "  当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
+    print_ok " 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
     INS="apt-get install -y"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
    else
-    print_error "  当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
+    print_error " 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
-  echo "================================================================"
   print_ok " 初始化完成……  Pre-environment preparation. . ."
   print_ok " 开始系统安装  Start system installation. . . "
-  echo "================================================================"
-  echo -e "\n"
-}
-
-Install_load(){
-if [ -f "/tmp/Core_Install.sh" ]; then
-    rm -f /tmp/Core_Install.sh
-  fi
-  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
 }
 
 function MENU() {
@@ -232,71 +213,70 @@ function MENU() {
     9)
       echo -e "\n"
       read -r -p "请输入系统镜像地址 Custom image URL: " imgURL
-      echo -e "\n"
-      read -r -p "你确定要重装系统 Are you sure start reinstall? [Y/n]: " input
-      case $input in
-        [yY][eE][sS]|[yY]) bash /tmp/Core_Install.sh -dd "$imgURL" ;;
-        *) clear; echo "已被用户取消. . .Canceled by user. . ."; exit 1;;
-      esac
-      ;;
+      read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+      bash /tmp/Core_Install.sh -dd "$imgURL" ;;
     0) exit 0;;
-    *) echo "错误输入，自动退出. . .Wrong input，Auto EXIT. . ."; exit 1;;
+    *) echo "错误输入，自动退出… Wrong input，Auto Exit..."; exit 1;;
   esac
+}
+
+START(){
+  INSTALL_START="bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh')"
 }
 
 function CentOS_8() {
   System_Check
-  Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
-  bash /tmp/Core_Install.sh  -c 8 -v 64 -a -firmware 
+  START
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  $INSTALL_START  -c 8 -v 64 -a -firmware 
   EXIT 1
 }
 
 function CentOS_7() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ;  
   bash /tmp/Core_Install.sh -c 7.9.2009 -v 64 -a -firmware
 }
 function CentOS_6() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh  -c 6.10 -v 64 -a -firmware 
 }
 
 function Debian_10() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh -d 10 -v 64 -a -firmware 
 }
 
 function Debian_9() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh -d 9 -v 64 -a -firmware
 }
 
 function Ubuntu_20.04() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh -u 20.04 -v 64 -a -firmware
 }
 
 function Ubuntu_18.04() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh -u 18.04 -v 64 -a -firmware
 }
 
 function Ubuntu_16.04() {
   System_Check
   Install_load
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续... Press any key to continue..." ; 
+  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   bash /tmp/Core_Install.sh -u 16.04 -v 64 -a -firmware
 }
 
