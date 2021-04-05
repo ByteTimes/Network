@@ -320,7 +320,7 @@ function MENU() {
   echo "      │       --------------------------------------------------------       │"
   echo "      ├──────────────────────────────────────────────────────────────────────┤"
   echo "      │                                                                      │"
-  echo "      │     ღ选择你想安装的系统 Which System Install:                        │"
+  echo "      │      选择你想安装的系统 Which System Install:                        │"
   echo "      │                                                                      │"
   echo "      │      1) Latest 【CentOS 8】(DD Image)                                │"                                                           
   echo "      │      2) Latest 【CentOS 7】(DD Image)                                │"
