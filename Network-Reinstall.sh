@@ -270,10 +270,6 @@ function Ubuntu_16.04() {
 }
 
 
-
-
-
-
 isRoot_Check
 judgment_parameters "$@"
 MENU "$@"
