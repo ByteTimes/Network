@@ -258,7 +258,7 @@ function NetMode() {
             exit 1
           }
         ;;
-        *) clear; echo "已被用户取消 Canceled by User. . ."; exit 1;;
+        *) echo "已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
