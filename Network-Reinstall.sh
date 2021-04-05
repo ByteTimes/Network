@@ -123,6 +123,7 @@ function CopyRight() {
 function isRoot_Check() {
   CopyRight
   if [[ 0 == "$UID" ]]; then
+    line
     print_ok "当前用户是 root 用户，开始安装流程. . ."
     sleep 1s
   else
@@ -133,6 +134,7 @@ function isRoot_Check() {
 
 function System_Check(){
   CopyRight
+  line
   source '/etc/os-release'
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
@@ -223,9 +225,9 @@ function SetNetwork() {
 
 function NetMode() {
   CopyRight
-
+  line
   if [ "$isAuto" == '0' ]; then
-    read -r -p "是否使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
+    read -r -p " 是否使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:" input
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -237,16 +239,16 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      echo -e "未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually..\n"
+      echo -e " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually..\n"
       UpdateIp
     else
       CopyRight
       print_ok
-      echo "IP: $MAINIP"
-      echo "Gateway: $GATEWAYIP"
-      echo "Netmask: $NETMASK"
+      echo " IP: $MAINIP"
+      echo " Gateway: $GATEWAYIP"
+      echo " Netmask: $NETMASK"
       echo -e "\n"
-      read -r -p "       是否确认 Confirm? [Y/n]:" input
+      read -r -p " 是否确认 Confirm? [Y/n]:" input
       case $input in
         [yY][eE][sS]|[yY]) ;;
         [nN][oO]|[nN])
