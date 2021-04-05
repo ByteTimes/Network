@@ -226,7 +226,7 @@ function SetNetwork() {
 function NetMode() {
   if [ "$isAuto" == '0' ]; then
     read -r -p input
-    print_ok " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
+    print_info " 使用DHCP自动配置网络 Using DHCP to Configure Network Automatically? [Y/n]:"
     case $input in
       [yY][eE][sS]|[yY]) NETSTR='' ;;
       [nN][oO]|[nN]) isAuto='1' ;;
@@ -238,14 +238,15 @@ function NetMode() {
     GetIp
     ipCheck
     if [ $? -ne 0 ]; then
-      echo -e " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
+      print_info  " 未检测到正确IP信息，请手动输入 Error Detecting IP. Please input manually.\n"
       UpdateIp
     else
       echo "IP: $MAINIP"
       echo "Gateway: $GATEWAYIP"
       echo "Netmask: $NETMASK"
       echo -e "\n"
-      read -r -p "是否确认 Confirm? [Y/n]:" input
+      print_info "是否确认 Confirm? [Y/n]:"
+      read -r -p input
       case $input in
         [yY][eE][sS]|[yY]) ;;
         [nN][oO]|[nN])
@@ -254,11 +255,11 @@ function NetMode() {
           ipCheck
           [[ $? -ne 0 ]] && {
             clear
-            echo -e " 输入错误,自动退出 INPUT Error，Auto Exit. . . \n"
+            print_error " 输入错误,自动退出 INPUT Error，Auto Exit. . . \n"
             exit 1
           }
         ;;
-        *) echo "已被用户取消 Canceled by User. . ."; exit 1;;
+        *) print_error "已被用户取消 Canceled by User. . ."; exit 1;;
       esac
     fi
     NETSTR="--ip-addr ${MAINIP} --ip-gate ${GATEWAYIP} --ip-mask ${NETMASK}"
@@ -273,14 +274,14 @@ function Mirror_Check() {
   fi
 
   if [ "$isAuto" == '0' ]; then
-    echo "使用默认DHCP模式 Using DHCP mode."
+    print_info "使用默认DHCP模式 Using DHCP mode."
   else
     echo "IP: $MAINIP"
     echo "Gateway: $GATEWAYIP"
     echo "Netmask: $NETMASK"
   fi
 
-  [[ "$isCN" == '1' ]] && echo "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
+  [[ "$isCN" == '1' ]] && print_info "检测服务器IP在中国大陆，使用中国境内镜像地址 Using domestic mode."
 
   CMIRROR=''
   CVMIRROR=''
