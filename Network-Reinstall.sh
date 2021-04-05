@@ -111,7 +111,7 @@ function CopyRight() {
   echo "      │                                                                      │"
   echo "      │                                    https://www.dreamstart.site       │"
   echo "      │                                                                      │"
-  echo "      │──────────────────────────────────────────────────────────────────────│"
+  echo "      ├──────────────────────────────────────────────────────────────────────┤"
   echo "      │       --------------------------------------------------------       │"
   echo "      │       默认root密码：dreamstart.site                                  │"
   echo "      │       Default root password: dreamstart.site                         │"
