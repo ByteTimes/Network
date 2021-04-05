@@ -225,7 +225,6 @@ function CentOS_8() {
   System_Check
   echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
   $INSTART -c 8 -v 64 -a -firmware 
-  EXIT 1
 }
 
 function CentOS_7() {
