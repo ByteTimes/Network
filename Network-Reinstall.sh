@@ -142,6 +142,7 @@ function System_Check(){
     INS="yum install -y"
     yum update
     $INS xz openssl gawk file wget curl
+     sleep 3s
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
     print_ok " 当前系统为 Debian ${VERSION_ID} ${VERSION}"
@@ -151,12 +152,14 @@ function System_Check(){
     INS="apt-get install -y"
     apt-get update
     $INS xz-utils openssl gawk file wget curl
+     sleep 3s
    else
     print_error " 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
   print_ok " 初始化完成 Pre-environment preparation. . ."
   print_ok " 开始系统安装  Start system installation. . . "
+   sleep 3s
 }
 
 function isValidIp() {
