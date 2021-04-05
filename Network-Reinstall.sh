@@ -220,8 +220,8 @@ function MENU() {
 function Install_start() {
   if [ -f "/tmp/Core_Install.sh" ]; then
     rm -f /tmp/Core_Install.sh
-    wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
   fi
+  wget --no-check-certificate -qO /tmp/Core_Install.sh 'https://savilelee.github.io/Network/CoreFiles/Core_Install.sh' && chmod a+x /tmp/Core_Install.sh
 }
 
 function CentOS_8() {
