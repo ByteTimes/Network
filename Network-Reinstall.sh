@@ -26,7 +26,8 @@ Ubuntu_20='0'
 Ubuntu_18='0'
 Ubuntu_16='0'
 SPECIFIED_VERSION=''
-
+INSTART="bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh')"
+POINT="echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; "
 
 function print_ok() {
   echo "---------------------------------------------------------------------------------------------------------------------"
@@ -135,7 +136,6 @@ function isRoot_Check() {
 
 function System_Check(){
   CopyRight
-  INSTART="bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh')"
   source '/etc/os-release'
   print_ok " 安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
@@ -234,7 +234,7 @@ function CentOS_7() {
 }
 function CentOS_6() {
   System_Check
-  echo -e "\nPassword: dreamstart.site\n"; read -s -n1 -p "按任意键继续,Ctrl+C退出... Press any key to continue, Ctrl+C to Exit..." ; 
+  "$POINT"
   "$INSTART"  -c 6.10 -v 64 -a -firmware 
 }
 
