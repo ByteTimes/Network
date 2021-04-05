@@ -225,17 +225,20 @@ function Install_start() {
 
 function CentOS_8() {
   System_Check
+  Install_start
   "$POINT"
   "$INSTART" -c 8 -v 64 -a -firmware 
 }
 
 function CentOS_7() {
   System_Check
+  Install_start
   "$POINT"
   "$INSTART" -c 7.9.2009 -v 64 -a -firmware
 }
 function CentOS_6() {
   System_Check
+  Install_start
   "$POINT"
   "$INSTART"  -c 6.10 -v 64 -a -firmware 
 }
