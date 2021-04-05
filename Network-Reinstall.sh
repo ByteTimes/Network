@@ -193,9 +193,9 @@ function GetIp() {
 }
 
 function UpdateIp() {
-  read -r -p "Your IP: " MAINIP
-  read -r -p "Your Gateway: " GATEWAYIP
-  read -r -p "Your Netmask: " NETMASK
+  read -r -p " Your IP: " MAINIP
+  read -r -p " Your Gateway: " GATEWAYIP
+  read -r -p " Your Netmask: " NETMASK
 }
 
 function SetNetwork() {
