@@ -159,6 +159,7 @@ function System_Check(){
     print_error "当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
   fi
+  line
   print_ok "初始化完成 Pre-environment preparation. . ."
   print_ok "开始系统安装  Start system installation. . . "
   line
