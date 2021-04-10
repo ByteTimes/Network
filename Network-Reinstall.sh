@@ -141,20 +141,20 @@ function System_Check(){
   print_ok "安装环境准备中 Pre-environment preparation. . ."
   if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 6 ]]; then
     print_ok "当前系统为 Centos ${VERSION_ID} ${VERSION}"
+    INS="yum install -y"
     yum update
-    yum install -y xz openssl gawk file wget curl
-    sleep 2s
+    $INS xz openssl gawk file wget curl
 
   elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 9 ]]; then
     print_ok "当前系统为 Debian ${VERSION_ID} ${VERSION}"
-    apt-get update
-    apt-get install -y xz-utils openssl gawk file wget curl
-    sleep 2s
+    INS="apt install -y"
+    apt update
+    $INS install -y xz-utils openssl gawk file wget curl
   elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
     print_ok "当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME}"
-    apt-get update
-    apt-get install -y xz-utils openssl gawk file wget curl
-    sleep 2s
+    INS="apt install -y"
+    apt update
+    $INS xz-utils openssl gawk file wget curl
    else
     print_error "当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内"
     exit 1
