@@ -127,6 +127,7 @@ function isRoot_Check() {
     print_ok "当前用户是 root 用户，开始安装流程. . ."
     sleep 1s
   else
+    line
     print_error "当前用户不是root用户,请切换到root用户重新执行脚本" 
     exit 1
   fi
