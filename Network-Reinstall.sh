@@ -129,6 +129,7 @@ function isRoot_Check() {
   else
     line
     print_error "当前用户不是root用户,请切换到root用户重新执行脚本" 
+    echo -e "\n"
     exit 1
   fi
 }
