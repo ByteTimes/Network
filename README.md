@@ -84,13 +84,13 @@ yum update
 
 因为 Oracle Cloud 的 EFI 是弱支持，安装完 Debian 还是不能直接开机，会卡在 EFI Shell 里，这样我们先手动选择 grubx64.efi 引导进入 Debian 系统。
 
-输入如下命令：
+3.1 输入如下命令：
 ```
 fs0:
 cd EFI\debian
 grubx64.efi
 ```
-修复 EFI 引导
+3.2 修复 EFI 引导
 
 进入系统后，切换到 root 用户执行如下命令：
 ```
@@ -99,7 +99,7 @@ cd /boot/efi/EFI
 mkdir boot
 cp debian/grubx64.efi boot/bootx64.efi
 ```
-告知 grub 确保备选 bootloader 是最新版：
+3.3 告知 grub 确保备选 bootloader 是最新版：
 ```
 echo "grub-efi-amd64 grub2/force_efi_extra_removable boolean true" | sudo debconf-set-selections
 ```
