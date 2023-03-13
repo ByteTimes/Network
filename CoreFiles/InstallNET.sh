@@ -1,10 +1,9 @@
 #!/bin/bash
 
-## License: GPL
+## License: MIT
 ## It can reinstall Debian, Ubuntu, CentOS system with network.
-## Default root password: MoeClub.org
-## Blog: https://moeclub.org
-## Written By MoeClub.org
+## Default root password: dreamstart.site
+## BLOG: https://dreamstart.site
 
 export tmpVER=''
 export tmpDIST=''
@@ -322,7 +321,7 @@ elif [[ "$Relese" == 'CentOS' ]]; then
 fi
 [ -n "$tmpWORD" ] && dependence openssl
 [[ -n "$tmpWORD" ]] && myPASSWORD="$(openssl passwd -1 "$tmpWORD")";
-[[ -z "$myPASSWORD" ]] && myPASSWORD='$1$4BJZaD0A$y1QykUnJ6mXprENfwpseH0';
+[[ -z "$myPASSWORD" ]] && myPASSWORD='$1$4BJZaD0A$bn4SVa35BgZNP0HlEGwIC.';
 
 tempDisk=`getDisk`; [ -n "$tempDisk" ] && IncDisk="$tempDisk"
 
