@@ -61,7 +61,7 @@ bash <(curl -L https://git.io/Reinstall.sh) -CentOS_6
 
 ### 直接ReInstall Debian 10，命令中的 -d 后面为Debian版本号，-v 后面为64位/32位
 ```
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh') -d 10 -v 64 -a -firmware
+bash <(wget --no-check-certificate -qO- 'https://lucklifes.github.io/Network/CoreFiles/InstallNET.sh') -d 10 -v 64 -a -firmware
 ```
 ### 建议初始系统Ubuntu16.04，经测试使用非常稳定，需要安装下面的组件：
 #### 1. 安装所需软件
@@ -106,7 +106,7 @@ echo "grub-efi-amd64 grub2/force_efi_extra_removable boolean true" | sudo debcon
 
 ### Install DD系统
 ```
-bash <(wget --no-check-certificate -qO- 'https://savilelee.github.io/Network/CoreFiles/LinuxNET.sh') -dd "https://****.***/***.x64.tar.gz"
+bash <(wget --no-check-certificate -qO- 'https://lucklifes.github.io/Network/CoreFiles/InstallNET.sh') -dd "https://****.***/***.x64.tar.gz"
 ```
 ### Timezone
 ```
